@@ -1,2 +1,4 @@
 # GRIMBOT
-GRIMBOT Bot discord sous Node.js
+![alt text](https://i.imgur.com/GfgsBdt.jpg)
+
+Bot Discord sous Node.js
