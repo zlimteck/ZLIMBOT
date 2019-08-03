@@ -7,7 +7,7 @@ Bot Discord sous Node.js
 # Token
 
 Crée votre bot sur cette [page](https://discordapp.com/developers/applications/) recupéré votre token et copiez le dans le fichier [botsettings.json](https://github.com/GrimZam/GRIMBOT/blob/master/botsettings.json)
-Example: `"token": "TOKEN.A.AJOUTER.ICI",`
+Example: `"token": "TOKEN",`
 
 # Prérequis
 
