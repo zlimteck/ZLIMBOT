@@ -6,7 +6,7 @@ Bot Discord sous Node.js
 
 # Token
 
-Crée votre bot sur cette [page](https://discordapp.com/developers/applications/) recupéré votre token et copiez le dans le fichier [botsettings.json](http://git.grindhouse.xyz:8888/GrimZam/grimbot/blob/master/botsettings.json)
+Crée votre bot sur cette [page](https://discordapp.com/developers/applications/) recupéré votre token et copiez le dans le fichier [botsettings.json](https://github.com/GrimZam/GRIMBOT/blob/master/botsettings.json)
 Example: `"token": "TOKEN.A.AJOUTER.ICI",`
 
 # Prérequis
@@ -15,7 +15,7 @@ Example: `"token": "TOKEN.A.AJOUTER.ICI",`
 
 # Installation des modules
 
-`npm install` pour installer la totalité des modules present dans le [package.json](http://git.grindhouse.xyz:8888/GrimZam/grimbot/blob/master/package.json)
+`npm install` pour installer la totalité des modules present dans le [package.json](https://github.com/GrimZam/GRIMBOT/blob/master/package.json)
 
 # PM2
 
