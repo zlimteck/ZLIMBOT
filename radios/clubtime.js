@@ -3,7 +3,7 @@ const ffmpeg = require("ffmpeg-binaries");
 const opusscript = require("opusscript");
 
 module.exports.run = async (client, message, args) => {
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Tu n'as pas la permission d'exÃ©cuter cette commande!");
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Tu n'as pas la permission d'exécuter cette commande!");
     if (message.member.voiceChannel) {
         message.member.voiceChannel.join()
         .then(connection => {
