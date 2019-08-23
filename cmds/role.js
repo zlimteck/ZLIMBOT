@@ -5,7 +5,7 @@ const errors = require("../utils/errors.js");
 module.exports.run = async (client, message, args) => {
     const roleName = args.join(" ");
     const role = message.guild.roles.find(r => r.name.toLowerCase() == roleName.toLowerCase());
-    if (!role) return message.reply("That doesn't seem to be a role");
+    if (!role) return message.reply("Aucun role de ce nom n'est present sur ce serveur !");
     let haveRole = message.guild.members.filter(m => m.roles.get(role.id)).size;
     let Avatarbot = client.user.displayAvatarURL;
     const embed = new Discord.RichEmbed()
