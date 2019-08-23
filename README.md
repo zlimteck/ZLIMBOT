@@ -1,4 +1,4 @@
-# GRIMBOT
+# ZLIMBOT
 
 ![alt text](https://i.imgur.com/GfgsBdt.jpg)
 
