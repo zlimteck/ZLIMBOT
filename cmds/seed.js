@@ -13,7 +13,8 @@ module.exports.run = async (bot, message, args) => {
     .addField("Titre:", titre)
     .addField("User:", `${target} Merci de passer ce torrent en seed !`)
     .setTimestamp()
-    message.channel.send({embed: embed});
+    target.send({embed: embed});
+    message.author.send(`${message.author} La demande de mise en seed a bien était envoyé a ${target}`)
 }
 
 module.exports.help = {
