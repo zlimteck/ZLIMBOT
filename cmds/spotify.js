@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = async (client, message) => {
+module.exports.run = async (bot, message) => {
     const user = message.mentions.users.first() || message.author;
     if (user.presence.game !== null && user.presence.game.type === 2 && user.presence.game.name === "Spotify") {
         const trackIMG = user.presence.game.assets.largeImageURL;
