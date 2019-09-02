@@ -14,8 +14,8 @@ module.exports.run = (bot, message, args) => {
         var temps = {
             "Sunny": "Soleil",
             "Clear": "Dégagé",
-			"Mostly Sunny": "Assez ensoleillé",
-			"Cloudy": "Nuageux",
+	    "Mostly Sunny": "Assez ensoleillé",
+	    "Cloudy": "Nuageux",
             "Mostly Cloudy": "Plutôt nuageux",
             "Snow": "Temps enneigé",
             "Light Rain": "Pluie légère",
