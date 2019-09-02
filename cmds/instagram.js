@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const sa = module.require('superagent');
 
-exports.run = async (client, message, args) => {
+exports.run = async (bot, message, args) => {
     if (!args[0]) return message.channel.send("!instagram ``lien de la publicataion``");
     let {body} = await sa.get('https://api.instagram.com/oembed/?url=' + args[0]);
     if (!body) return message.channel.send("Post Instagram non trouvé !");
