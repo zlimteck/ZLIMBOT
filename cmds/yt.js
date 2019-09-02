@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const errors = require("../utils/errors.js");
 const ytdl = require("ytdl-core");
 
-module.exports.run = async (client, message, args, ops) => {
+module.exports.run = async (bot, message, args, ops) => {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Tu n'as pas la permission d'exécuter cette commande!");
     if (!message.member.voiceChannel) return message.channel.send('Tu dois etre dans un channel vocal !');
     if (message.guild.voiceChannel) return message.channel.send('Le bot est deja connecté dans un channel vocal');
