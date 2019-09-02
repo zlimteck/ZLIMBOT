@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = async (client, message) => {
+module.exports.run = async (bot, message) => {
     let embed = new Discord.RichEmbed()
     .setTitle("Liste des Radios")
     .setDescription("Tu dois etre connecter a un salon vocal pour executer les commandes suivante")
