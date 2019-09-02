@@ -4,8 +4,8 @@ const {version} = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
 
-module.exports.run = async (client, message) => {
-    const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+module.exports.run = async (bot, message) => {
+    const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
     let platform;
     let build;
 
@@ -20,9 +20,9 @@ module.exports.run = async (client, message) => {
         build = "Inconnu"
     }
 
-    let Avatarbot = client.user.displayAvatarURL;
+    let Avatarbot = bot.user.displayAvatarURL;
     let embed = new Discord.RichEmbed()
-    .setAuthor(client.user.username)
+    .setAuthor(bot.user.username)
     .setThumbnail(Avatarbot)
     .setColor("#15f153")
     .setDescription("!help pour affiché les commandes")
@@ -33,8 +33,8 @@ module.exports.run = async (client, message) => {
     .addField("❯ Build", `${build}`)
     .addField("❯ RAM Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`)
     .addField("❯ Uptime", `${duration}`)
-    .addField("❯ Serveurs", `${client.guilds.size.toLocaleString()}`)
-    .addField("❯ Crée le", client.user.createdAt)
+    .addField("❯ Serveurs", `${bot.guilds.size.toLocaleString()}`)
+    .addField("❯ Crée le", bot.user.createdAt)
     .setFooter(`Demandé par ${message.author.username}`)
     .setTimestamp()
     message.channel.send(embed);
