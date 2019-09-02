@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const snekfetch = require('snekfetch');
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (bot, message, args) => {
     try{
         const query = args.join(" ");
         const {body} = await snekfetch
