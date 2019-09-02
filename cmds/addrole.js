@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const errors = require("../utils/errors.js");
 
-module.exports.run = async (client, message, args, lang) => {
+module.exports.run = async (bot, message, args, lang) => {
     if (!message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return errors.noPerms(message, "MANAGE_ROLES_OR_PERMISSIONS");
     if (args[0] == "help"){
         message.reply("Usage: !addrole <user> <rôle>");
