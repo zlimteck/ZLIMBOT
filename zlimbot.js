@@ -151,10 +151,10 @@ bot.on("guildMemberRemove", async member => {
 });
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Ivdyabr5",
-    database: "zlimbot"
+    host: "HOSTNAME",
+    user: "USER",
+    password: "PASSWORD",
+    database: "NAME DB"
 });
 
 con.connect(err => {
