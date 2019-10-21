@@ -4,6 +4,7 @@ const fs = require("fs");
 const prefix = botSettings.prefix;
 const bot = new Discord.Client({disableEveryone: true})
 const mysql = require("mysql");
+let xp = require("./xp.json");
 
 bot.commands = new Discord.Collection();
 
@@ -150,10 +151,10 @@ bot.on("guildMemberRemove", async member => {
 });
 
 var con = mysql.createConnection({
-    host: "HOSTNAME",
-    user: "UTILISATEUR",
-    password: "MOT DE PASSE",
-    database: "NOM DE LA DB"
+    host: "localhost",
+    user: "root",
+    password: "Ivdyabr5",
+    database: "zlimbot"
 });
 
 con.connect(err => {
@@ -182,6 +183,57 @@ bot.on("message", async message => {
         }
         con.query(sql);
     });
+
+let min = 1;
+let max = 1;
+let xpAdd = Math.floor(Math.random() * (max - min + 1)) +min;
+
+if(!xp[message.author.id]){
+  xp[message.author.id] = {
+    xp: 0,
+    level: 1
+  };
+}
+
+let curxp = xp[message.author.id].xp;
+let curlvl = xp[message.author.id].level;
+let nxtLvl = xp[message.author.id].level * 500;
+xp[message.author.id].xp =  curxp + xpAdd;
+if(nxtLvl <= xp[message.author.id].xp){
+  xp[message.author.id].level = curlvl + 1;
+  let lvlup = new Discord.RichEmbed()
+  .setTitle("Level Up!")
+  .setThumbnail(message.author.displayAvatarURL)
+  .setColor("#15f153")
+  .addField("Félicitation", `${message.author} tu viens de level up`, true)
+  .addField("Level :", curlvl + 1)
+  .addField("Total Xp :", curxp);
+
+  message.channel.send(lvlup)
+}
+
+// NOT STABLE FIX SOON !!
+
+//if (curlvl <= xp[message.author.id].level) {
+//    xp[message.author.id].level * 5;
+  
+//    let addrankup = message.member;
+//    let vipmember = message.guild.roles.find(`name`, "VIP");
+//    addrankup.addRole(vipmember.id).catch(console.error);
+//    message.channel.send(`Félicitations tu as atteint le level 5 tu obtiens donc le rôle VIP qui te donnes accés au channel shout-vip !`)
+//    var logschannel = message.guild.channels.find(logschannel => logschannel.name === "logs");
+//    if (!logschannel) return message.channel.send("Impossible de trouver le salon logs.");
+//    await (addrankup.addRole(vipmember.id));
+//    const logembed = new Discord.RichEmbed()
+//    .setDescription(`Rôle: ${vipmember.name} assigné a ${message.member} par ZLIMBOT`)
+//    .setColor("#F8F9F9")
+//    .setTimestamp()
+//    logschannel.send(logembed);
+//}
+
+fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+  if(err) console.log(err)
+});
 
     let messageArray = message.content.split(" ");
     let command = messageArray[0];
