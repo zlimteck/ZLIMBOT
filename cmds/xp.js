@@ -1,22 +1,29 @@
 const Discord = require("discord.js");
+let xp = require("../xp.json");
 
-module.exports.run = async (bot, message, args, con) => {
+module.exports.run = async (bot, message, args) => {
     let target = message.mentions.users.first() || message.guild.members.get(args[1]) || message.author;
-    con.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
-        if (err) throw err;
 
-        if(!rows[0]) return message.channel.send("Ce membre n'a pas d'xp !")
-        let xp = rows[0].xp;
+    if(!xp[message.author.id]){
+        xp[message.author.id] = {
+          xp: 0,
+          level: 1
+       };
+     }
+        let curxp = xp[message.author.id].xp;
+        let curlvl = xp[message.author.id].level;
+        let nxtLvlXp = curlvl * 500;
+        let difference = nxtLvlXp - curxp;
         let embed = new Discord.RichEmbed()
         .setColor("#15f153")
-        .setThumbnail(target.displayAvatarURL)
-        .addField("Membre", `${target}`, true)
-        .addField('XP', xp)
-        .setFooter(`Demandé par ${message.author.username}`)
+        .setThumbnail(message.author.displayAvatarURL)
+        .addField("Membre", `${message.author}`)
+        .addField('Level', curlvl, true)
+        .addField('XP', curxp, true)
+        .setFooter(`${message.author.username} il te faut encore ${difference} pour level up !`)
         .setTimestamp()
         message.channel.send(embed);
         message.delete().catch();
-    });
 }
 
 module.exports.help = {
