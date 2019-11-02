@@ -10,6 +10,10 @@ module.exports.run = async (bot, message, args) => {
 
     let pUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   
+    if (pUser.id === message.author.id){
+      return message.reply("Arrete de vouloir tricher !!")
+    }
+
     if(!coins[pUser.id]){
       coins[pUser.id] = {
         coins: 0
