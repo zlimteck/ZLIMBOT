@@ -5,6 +5,7 @@ const prefix = botSettings.prefix;
 const bot = new Discord.Client({disableEveryone: true})
 const mysql = require("mysql");
 let xp = require("./xp.json");
+let coins = require("./ecoin.json");
 
 bot.commands = new Discord.Collection();
 
@@ -151,10 +152,10 @@ bot.on("guildMemberRemove", async member => {
 });
 
 var con = mysql.createConnection({
-    host: "HOSTNAME",
-    user: "USER",
-    password: "PASSWORD",
-    database: "NAME DB"
+    host: "localhost",
+    user: "root",
+    password: "Ivdyabr5",
+    database: "zlimbot"
 });
 
 con.connect(err => {
@@ -234,6 +235,24 @@ if(nxtLvl <= xp[message.author.id].xp){
 fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
   if(err) console.log(err)
 });
+
+if(!coins[message.author.id]){
+    coins[message.author.id] = {
+      coins: 0
+    };
+  }
+
+  let coinAmt = Math.floor(Math.random() * 1) + 1;
+  let baseAmt = Math.floor(Math.random() * 1) + 1;
+
+  if(coinAmt === baseAmt){
+    coins[message.author.id] = {
+      coins: coins[message.author.id].coins + coinAmt
+    };
+  fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
+    if (err) console.log(err)
+    });
+}
 
     let messageArray = message.content.split(" ");
     let command = messageArray[0];
