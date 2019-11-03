@@ -16,6 +16,8 @@ module.exports.run = async (bot, message) => {
     .addField("Radio FG:", "!radiofg")
     .addField("Galaxie Radio", "!galaxie")
     .addField("Techno4ever", "!techno4ever")
+    .addField("Hit-a-jam", "!hitajam")
+    .addField("Studio Brussel", "!studiobrussel")
     .setColor('#606060')
     .setFooter(`Demandé par ${message.author.username}`)
     .setTimestamp()
