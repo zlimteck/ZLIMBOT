@@ -24,6 +24,7 @@ module.exports.run = async (bot, message, args) => {
 
     let pCoins = coins[pUser.id].coins;
     let sCoins = coins[message.author.id].coins;
+    let Ecoin = coins[message.author.id].coins;
 
     //if (!args[0] || !args[1] || args[0 == "null"]) return message.reply("Aucun montant d'Ecoin rentré !");
     if (!args[1] || args[1 == "null"]) return message.reply("Aucun montant d'Ecoin rentré !");
@@ -39,13 +40,24 @@ module.exports.run = async (bot, message, args) => {
       coins: pCoins + parseInt(args[1])
     };
 
-    message.channel.send(`${message.author} a envoyé a ${pUser} ${args[1]} Ecoin.`);
+    let embed = new Discord.RichEmbed()
+    .setAuthor(message.author.tag, message.author.displayAvatarURL)
+    .setThumbnail("https://imgur.com/yARdHmJ.jpg")
+    //.addField("Virement", `${message.author} a effectué un virement de ${args[1]} Ecoin a ${pUser} !`)
+    .addField("Virement pour:", `${pUser}`, true)
+    .addField("Montant:", `${args[1]} Ecoin`, true) 
+    .setFooter(`Virement de ${message.author.username} traité par E Corp !`)
+    .setTimestamp()
+    message.channel.send(embed);
+    pUser.send({embed: embed});
+    message.delete().catch();
+    //message.channel.send(`${message.author} a envoyé a ${pUser} ${args[1]} Ecoin.`);
 
     fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
       if(err) cosole.log(err)
     });
 
-    message.delete().catch();
+    //message.delete().catch();
 
   }
 
