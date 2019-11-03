@@ -1,0 +1,9 @@
+{
+    "VIP": {
+        "name": "Rôle VIP",
+        "type": "Rôle",
+        "price": "7500 Ecoin",
+        "description": "Te donne accés au rôle VIP",
+        "information": "Envoyé le montant du paiment a GrimZ, le rôle vous sera ensuite attribué apres traitement de la commande !"
+    }
+}
