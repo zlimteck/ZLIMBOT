@@ -13,9 +13,10 @@ module.exports.run = async (bot, message, args) => {
     let Ecoin = coins[message.author.id].coins;
         let embed = new Discord.RichEmbed()
         .setColor("#15f153")
-        .setThumbnail(message.author.displayAvatarURL)
-        .addField("Membre", `${message.author.username}`)
-        .addField('Ecoin: ', Ecoin)
+        .setAuthor(message.author.tag, message.author.displayAvatarURL)
+        .setThumbnail("https://imgur.com/yARdHmJ.jpg")
+        .addField('Solde restant:', `${Ecoin} Ecoin`)
+        .setFooter(`Solde de ${message.author.username} affiché via E Corp !`)
         .setTimestamp()
         message.channel.send(embed);
         message.delete().catch();
