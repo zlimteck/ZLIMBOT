@@ -1,0 +1,38 @@
+{
+    "STAFF": {
+        "trophy": "🔰",
+        "type": "success",
+        "description": "Membre staff",
+        "obtention": "Faire partie ou avoir fait partie du staff"
+    },
+
+    "VIP": {
+        "trophy": "👑",
+        "type": "success",
+        "description": "Membre VIP",
+        "obtention": "Faire partie ou avoir fait partie des membres VIP"
+    },
+
+    "NSFW": {
+        "trophy": "💦",
+        "type": "success",
+        "description": "Fan du channel NSFW (Petit coquinou)",
+        "obtention": "Avoir participé un certains nombre de fois dans ce channel"
+    },
+
+    "CASINO": {
+        "trophy": "🎰",
+        "type": "success",
+        "description": "Fan du channel CASINO",
+        "obtention": "Avoir participé un certains nombre de fois dans ce channel"
+    },
+
+    "ECOIN": {
+        "trophy": "💰",
+        "type": "success",
+        "description": "Gros riche",
+        "obtention": "Avoir 1 000 000 d'Ecoin sur ton compte"
+    }
+
+}
+
