@@ -28,7 +28,11 @@ module.exports.run = async (bot, message, args) => {
 
     //if (!args[0] || !args[1] || args[0 == "null"]) return message.reply("Aucun montant d'Ecoin rentré !");
     if (!args[1] || args[1 == "null"]) return message.reply("Aucun montant d'Ecoin rentré !");
+
     if (args[1] == pUser) return message.reply("Usage: !pay @username montant");
+
+    if (isNaN(args[1])) return message.reply('Entre un montant valide !')
+
 
     if(sCoins < args[1]) return message.reply("Tu n'as pas assez d'Ecoin pour effectuer ce virement !");
 
