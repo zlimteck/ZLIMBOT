@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
     let colour = args[0];
     let money = args[1];
 
-    if (!money) return message.channel.send(`Usage: \`!roulette <noir, rouge, bleu> <amount>\`\nChoisissez n'importe laquelle des couleurs que vous voulez ... mais certaines sont plus susceptibles que d'autres ...\n**Le noir est pour les nombres pairs**... **et rouge est pour impair**... ces deux éléments vous fourniront **1,5x votre montant initial**.\nPrenez un risque et choisissez **Bleu** et vous obtiendrez **14x le montant d'argent** ... mais c'est 1 chance sur 37. `); //help
+    if (!money) return message.channel.send(`Usage: \`!roulette <noir, rouge, bleu> <amount>\`\nChoisissez n'importe laquelle des couleurs que vous voulez ... mais certaines sont plus susceptibles que d'autres ...\n**Le noir est pour les nombres pairs**... **et rouge est pour impair**... ces deux éléments vous fourniront **1,5x votre montant initial**.\nPrenez un risque et choisissez **Bleu** et vous obtiendrez **14x le montant d'argent** ... mais c'est 1 chance sur 37. `);
     if (isNaN(money)) return message.channel.send(`**${message.author.username}**, Merci d'entré un montant valide !`);
     if (money > 500) money = 500;
     if (coins[message.author.id].coins < money) return message.channel.send(`**${message.author.username}**, Tu ne peux pas jouer ce montant, tu n'as pas ce montant d'Ecoin!`);
@@ -41,9 +41,7 @@ module.exports.run = async (bot, message, args) => {
           .setTimestamp()
           message.channel.send(embed);
           message.delete().catch();
-        //message.channel.send(`**${message.author.username}**, 🔵 **JACKPOT** Tu gagnes **${money} Ecoin** 🔵 | Le nombre est **${random}**`);
           if(err) console.log(err)
-          //message.delete().catch();
         });
     } else if (isOdd(random) && colour == 1) {
         money = money * 1.5
@@ -60,9 +58,7 @@ module.exports.run = async (bot, message, args) => {
           .setTimestamp()
           message.channel.send(embed);
           message.delete().catch();
-        //message.channel.send(`**${message.author.username}**, 🔴 Tu gagnes **${money} Ecoin** 🔴 | Le nombre est **${random}**`);
           if(err) console.log(err)
-          //message.delete().catch(); 
         });
     } else if (!isOdd(random) && colour == 0) {
         money = money * 1.5
@@ -79,11 +75,9 @@ module.exports.run = async (bot, message, args) => {
           .setTimestamp()
           message.channel.send(embed);
           message.delete().catch();
-        //message.channel.send(`**${message.author.username}**, ⚫ Tu gagnes **${money} Ecoin** ⚫ | Le nombre est **${random}**`);
           if(err) console.log(err) ;
-          //message.delete().catch();
         });
-    } else { // Lost
+    } else {
       let curBal4 = coins[message.author.id].coins
       coins[message.author.id].coins = curBal4 - money;
         fs.writeFile('./ecoin.json', JSON.stringify(coins, null, 2), (err) => {
@@ -97,9 +91,7 @@ module.exports.run = async (bot, message, args) => {
           .setTimestamp()
           message.channel.send(embed);
           message.delete().catch();
-        //message.channel.send(`**${message.author.username}**, Tu viens de perdre **${money} Ecoin** | Le nombre est **${random}**`);
           if(err) console.log(err)
-          //message.delete().catch();
         });
     }
 }
