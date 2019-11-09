@@ -1,6 +1,14 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const moment = require("moment")
 let config = require ("../botsettings.json")
+const status = {
+    online: "Online",
+    idle: "Idle",
+    dnd: "Do Not Disturb",
+    offline: "Offline/Invisible"
+};
+
 
 module.exports.noPerms = (message, perm) => {
     let embed = new Discord.RichEmbed()
@@ -43,4 +51,31 @@ module.exports.noReason = (channel) => {
     .setDescription("Stp indique une ou des raison(s).")
     .setColor(config.red);
     channel.send(embed).then(m => m.delete(10000));
+}
+
+module.exports.noinchanvocal = (message) => {
+    let embed = new Discord.RichEmbed()
+    .setTitle("**Erreur**")
+    .setDescription('Connecte toi a un channel vocal pour executer cette commande')
+    .setColor(config.red)
+    message.channel.send(embed)//.then(m => m.delete(10000));
+    message.delete().catch();
+}
+
+module.exports.botpresence = (message) => {
+    let embed = new Discord.RichEmbed()
+    .setTitle("**Erreur**")
+    .setDescription("Le bot n'est pas connecté dans un channel vocal")
+    .setColor(config.red)
+    message.channel.send(embed)//.then(m => m.delete(10000));
+    message.delete().catch();
+}
+
+module.exports.noevenchan = (message) => {
+    let embed = new Discord.RichEmbed()
+    .setTitle("**Erreur**")
+    .setDescription("Tu n'es pas conecté dans le meme channel")
+    .setColor(config.red)
+    message.channel.send(embed)//.then(m => m.delete(10000));
+    message.delete().catch();
 }
