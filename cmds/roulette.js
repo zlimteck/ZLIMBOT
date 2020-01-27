@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
     let money = args[1];
 
     if (!money) return message.channel.send(`Usage: \`!roulette <noir, rouge, bleu> <amount>\`\nChoisissez n'importe laquelle des couleurs que vous voulez ... mais certaines sont plus susceptibles que d'autres ...\n**Le noir est pour les nombres pairs**... **et rouge est pour impair**... ces deux éléments vous fourniront **1,5x votre montant initial**.\nPrenez un risque et choisissez **Bleu** et vous obtiendrez **14x le montant d'argent** ... mais c'est 1 chance sur 37. `);
-    if (isNaN(money)) return message.channel.send(`**${message.author.username}**, Merci d'entré un montant valide !`);
+    if (isNaN(money)) return message.channel.send(`**${message.author.username}**, Merci d'entrer un montant valide !`);
     if (money > 500) money = 500;
     if (coins[message.author.id].coins < money) return message.channel.send(`**${message.author.username}**, Tu ne peux pas jouer ce montant, tu n'as pas ce montant d'Ecoin!`);
     if (!colour)  return message.channel.send(`**${message.author.username}**, Vous ne pouvez parier que sur Noir (1,5x), Rouge (1,5x) ou Vert (14x).`);
