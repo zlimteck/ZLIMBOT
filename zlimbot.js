@@ -153,8 +153,8 @@ bot.on("guildMemberRemove", async member => {
 
 var con = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "Ivdyabr5",
+    user: "",
+    password: "",
     database: "zlimbot"
 });
 
