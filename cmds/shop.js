@@ -10,6 +10,8 @@ module.exports.run = async (bot, message, args) => {
         let price = shop.VIP.price;
         let description = shop.VIP.description
         let information = shop.VIP.information
+        let guild = message.channel.guild;
+        let role = guild.roles.find(role => role.name)
         let embed = new Discord.RichEmbed()
         .setTitle("**SHOP**")
         .setDescription(`Boutique du serveur AFTER`)
@@ -18,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
         .addField('Rôle:', name)
         .addField('Prix:', price)
         .addField('Description:', description)
-        .addField('Information sur le paiement:', information)
+        .addField('Information sur le paiement:', `envoyer le paiement a ${message.guild.owner}, la commande sera ensuite traiter !`)
         .setTimestamp()
         message.channel.send(embed);
         message.delete().catch();
