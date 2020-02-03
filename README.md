@@ -31,7 +31,7 @@ CREATE TABLE xp (id VARCHAR(30) NOT NULL, xp INT NOT NULL);
 
 # Prérequis
 
-[Node.js](https://nodejs.org/en/)
+[Node.js](https://nodejs.org/en/) [npm](https://www.npmjs.com/get-npm) [Discord.js](https://discord.js.org/#/)
 
 # Installation des modules
 
