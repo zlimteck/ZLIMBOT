@@ -16,12 +16,12 @@ module.exports.run = async (bot, message, args) => {
     if (isNaN(money)) return message.channel.send(`**${message.author.username}**, Merci d'entré un montant valide !`);
     if (money > 1000) money = 1000;
     if (coins[message.author.id].coins < money) return message.channel.send(`**${message.author.username}**, Tu ne peux pas jouer ce montant, tu n'as pas ce montant d'Ecoin!`);
-    if (!colour)  return message.channel.send(`**${message.author.username}**, Vous ne pouvez parier que sur Noir (2x), Rouge (2x) ou Vert (20x).`);
+    if (!colour)  return message.channel.send(`**${message.author.username}**, Vous ne pouvez parier que sur Noir (2x), Rouge (2x) ou Bleu (20x).`);
     colour = colour.toLowerCase()
     
-    if (colour == "n" || colour.includes("noir")) colour = 0;
-    else if (colour == "r" || colour.includes("rouge")) colour = 1;
-    else if (colour == "b" || colour.includes("bleu")) colour = 2;
+    if (colour == "noir" || colour.includes("noir")) colour = 0;
+    else if (colour == "rouge" || colour.includes("rouge")) colour = 1;
+    else if (colour == "bleu" || colour.includes("bleu")) colour = 2;
     else return message.channel.send(`**${message.author.username}**, Vous ne pouvez parier que sur Noir (2x), Rouge (2x) ou Bleu (20x).`);
     
     let random = Math.floor(Math.random() * 37);
