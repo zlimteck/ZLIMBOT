@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
         const randomnumber = Math.floor(Math.random() * allowed.length)
         let embed = new Discord.RichEmbed()
         .setColor("#E642AA")
-        .setTitle("Subreddit rAsiansGoneWild")
+        .setTitle("Subreddit r/AsiansGoneWild")
         .setImage(allowed[randomnumber].data.url)
         .setDescription("Posté par: " + allowed[randomnumber].data.author)
         .setURL(allowed[randomnumber].data.url)
