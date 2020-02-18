@@ -29,6 +29,8 @@ USE "NOM DE VOTRE DATABASE";
 CREATE TABLE xp (id VARCHAR(30) NOT NULL, xp INT NOT NULL);
 ```
 
+(Comprend juste l'xp, les lvl et les ecoin ainsi que l'xp sont stocker dans un .json)
+
 # Prérequis
 
 [Node.js](https://nodejs.org/en/) [npm](https://www.npmjs.com/get-npm) [Discord.js](https://discord.js.org/#/)
