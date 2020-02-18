@@ -29,7 +29,7 @@ USE "NOM DE VOTRE DATABASE";
 CREATE TABLE xp (id VARCHAR(30) NOT NULL, xp INT NOT NULL);
 ```
 
-(Comprend juste l'xp, les lvl et les ecoin ainsi que l'xp sont stocker dans un .json)
+(Comprend juste l'xp, les lvl et les ecoin ainsi que l'xp sont stocker dans un .json).
 
 # Prérequis
 
