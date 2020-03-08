@@ -143,6 +143,26 @@ bot.on("guildMemberAdd", async (member, message, args, bot, channels) => {
     var role = member.guild.roles.find(role => role.name === "USER");
     member.addRole(role)
     member.send(`${member} bienvenue sur notre serveur Discord ! \nTu obtiens le rôle ${role.name}. \nTu peut demander a etre membre approuvé a l'aide la commande suivante : < !approved @TONPSEUDO > dans le salon général du serveur.`)
+    if (!coins[member.id]){
+        coins[member.id] = {
+          coins: 0
+        };
+      }
+    let pCoins = coins[member.id].coins;
+    coins[member.id] = {
+        coins: pCoins + parseInt(5000)
+      };
+    fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
+        if(err) cosole.log(err)
+        });
+        member.send(`${member} 5000 ecoin te son egalement offert par Ecorp suite a ton arrivé sur le serveur !`)
+        let embed = new Discord.RichEmbed()
+        .setThumbnail("https://imgur.com/yARdHmJ.jpg")
+        .addField("Offre pour:", `${member}`, true)
+        .addField("Montant:", `5000 Ecoin`, true) 
+        .setFooter(`Offert par E Corp !`)
+        .setTimestamp()
+        member.send({embed: embed});
 });
 
 bot.on("guildMemberRemove", async member => {
