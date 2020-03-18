@@ -1,29 +1,61 @@
 const Discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
-    let bicon = bot.user.displayAvatarURL;
-	message.delete().catch();
+module.exports.run = async (bot, message) => {
+    let avatar = bot.user.displayAvatarURL;
+    let author = message.author
     let embed = new Discord.RichEmbed()
     .setAuthor("HELP")
     .setDescription("Affiche les commandes que propose ZLIMBOT")
-    .setThumbnail(bicon)
+    .setThumbnail(avatar)
     .setColor("#1AC6E1")
-    .addField("❯ :robot: Commandes Bot", "- !userinfo : Donne les infos de l'user. \n- !xp +@user = Affiche l'xp du membre demandé. \n- !zlimbot : Donne les infos de GRIMBOT. \n- !server : Donne les infos du serveur. \n- !member : Affiche le nombre de membres sur le serveur. \n- !role + ROLE : Affiche les infos sur le role demandé. \n- !avatar : Affiche l'avatar du membre. \n- !icon : Affiche l'icône du serveur. \n- !emojis : Affiche les emojis du serveur. \n- !approved @TONPSEUDO : Fait une demande pour etre membre approuvé.")
-    .addField("❯ :cop: Commandes Admin/Moderation", "- !tempomute @User 1s/m/h/d : Mute le membre. \n- !unmute @User : Unmute le membre. \n- !clear +number : Delete X message. \
-    \n- !say : Le bot envoi le message. \n- !sayinchan : Le bot envoie le message dans le salon indiqué. \n- !mp : Le bot envoi un DM. \n- !img +link : Le bot envoi une image. \n- !announce +message : Le bot envoi une annonce. \n- !sondage +message : Le bot envoi un sondage. \n- !kick +@User +Raison(s) : Kick le membre. \n- !ban +@User +Reasons : Ban le membre. \n- !createrole : Crée un role. \n- !addrole +@User +Role : Donne le rôle au membre(s). \
-    \n- !removerole +@User +Role : retire le rôle au membre(s). \n- !addecoin : Ajoute des ecoin au membre sur la DB (Exemple : ``!addecoin @Username 100``).")
-    .addField("❯ :gear: Utile", "- !report @User +Raison(s) : Report le membre. \n- !mpstaff + message : Envoie un MP au staff \n- !quote messageid channelid : Le bot quote le message. \n- !hastebin + message : Publie sur Hastebin et envoie l'url. \n- !ping : Tu obtiens ton ping. \n- !speedtest : Effectue un speedtest. \n- !afk +time/s/m/h/d : Le bot avertie que tu es AFK. \n- !rappel +time/s/m/h/d + motif : Lance un rappel. \n- !weather +localisation : Affiche la météo. \n- !spotify : Affiche les infos du morceau jouer sur Spotify. \n- !itunes : Effectue une recherche d'un album. \n- !trad +mot +Lang (ex: fr/en) : Traduit le mot donné. \n- !hltb : Affiche le lien vers le site. \n- !instagram + link post : Affiche le post instagram.")
-    .addField("❯ :musical_note: Music Youtube", "- !youtube +Titre : Le bot va chercher la video sur youtube \n- !yt +link youtube : Le bot va jouer la music dans le channel vocal ou la command a etait executée. \n- !stop : Le bot se deconnecte du channel vocal et coupe la music. ")
-    .addField("❯ :radio: Radio", "- !radiolist : Affiche la liste des radios disponible et la commande pour les lancer. \n- !stop :  Le bot se deconnecte du channel vocal et coupe la radio.")
-    .addField("❯ :tada: Fun", "- !chuck : Quote sur Chuck Norris. \n- !trump : Quote sur Donald Trump. \n- !meme : Le bot envoie un meme. \n- !metamorphe : Le bot va te métamorphosé.")
-    .addField("❯ :slot_machine: Casino", "- !roulette <noir, rouge, bleu> <amount> : Le bot lance la roulette. \n- !slots <amount> : Le bot lance la machine a sous. \n- !giveaway : Le bot lance un giveaway (Exemple : ``!giveaway <nombre de winners> <temps s/m/h/d> <price>``. \n- !lotery : Le bot lance une lotery (Exemple : ``!lotery <nombre de winners> <temps s/m/h/d> <montant ecoin>``.")
-    .addField("❯ :underage: Nsfw", "- !boobs : Le bot envoie une photo random de boobs. \n- !pussy : Le bot envoie une photo random d'une pussy. \n- !gonewild : Le bot envoie une photo random de gonewild. \n- !hentai : Le bot envoie une photo random hentai. \n- !porngif : Le bot envoie un porngif random. \n- !ass : Le bot envoie une photo random d'un cul. \n- !hot : Le bot envoie une photo random hot. \n- !young : Le bot envoie une photo random d'une jeune. \n- !asiat : Le bot envoie une photo random d'une asiat. \n- !milf : Le bot envoie une photo random d'une milf. \n- !old : Le bot envoie une photo random d'une vieille. \n- !ginger : Le bot envoie une photo random d'une ginger.")
-    .addField("❯ :credit_card: Ecoin", "- !ecoin : Affiche ton solde d'Ecoin disponible. \n- !pay : vire le montant d'Ecoin au membre identifié (Exemple : ``!pay @username 100``).")
+    .addBlankField(true)
+    .addField("**LEGENDE :**", "[TIME = s/m/h/d] \
+    \n [COULEUR = noir/rouge/bleu] \
+    \n [LANGUE = fr/en/es/de/ru]")
+    .addBlankField(true)
+    .addField("❯ :robot: Commandes Users", "- ``!userinfo`` **Informations** : Donne les infos de l'user. \n- ``!xp @Username`` **Informations** : Affiche l'xp du membre demandé. \
+    \n- ``!zlimbot`` **Informations** : Donne les infos de ZLIMBOT. \n- ``!server`` **Informations** : Donne les infos du serveur. \
+    \n- ``!member`` **Informations** : Affiche le nombre de membres sur le serveur. \n- ``!role ROLE`` **Informations** : Affiche les infos sur le role demandé. \
+    \n- ``!avatar @Username`` **Informations** : Affiche l'avatar du membre. \n- ``!icon`` **Informations** : Affiche l'icône du serveur. \
+    \n- ``!emojis`` **Informations** : Affiche les emojis present sur le serveur. \n- ``!approved @Username`` **Informations** Fait une demande pour etre membre approuvé.")
+    .addBlankField(true)
+    .addField("❯ :cop: Commandes Administration", "- ``!tempomute @Username TIME`` **Informations** : Mute le membre le temps indiqué. \n- ``!unmute @Username`` **Informations** : Unmute le membre. \
+    \n- ``!clear NUMBER`` **Informations** : Delete X message. \n- ``!say MESSAGE`` **Informations** : Le bot envoi le message. \
+    \n- ``!sayinchan CHANNELID MESSAGE`` **Informations** : Le bot envoie le message dans le salon indiqué. \n- ``!mp @Username`` **Informations** : Le bot envoi un DM. \
+    \n- ``!img LINK`` **Informations** : Le bot envoi une image. \n- ``!announce MESSAGE`` **Informations** : Le bot envoi une annonce. \n- ``!sondage MESSAGE`` **Informations** : Le bot envoi un sondage. \
+    \n- ``!kick @Username RAISON(S)`` **Informations** : Kick le membre. \n- ``!ban @Username RAISON(S)`` **Informations** : Ban le membre. \n- ``!createrole ROLE`` **Informations** : Crée un role. \
+    \n- ``!addrole @Username ROLE`` **Informations** : Ajoute le rôle au membre(s). \n- ``!removerole @Username ROLE`` **Informations** : retire le rôle au membre(s).")
+    .addBlankField(true)
+    .addField("❯ :gear: Utile", "- ``!report @Username RAISON(S)`` **Informations** : Report le membre. \n- ``!mpstaff MESSAGE`` **Informations** : Envoie un MP au staff. \n- ``!quote MESSAGEID CHANNELID`` **Informations** : Le bot quote le message. \
+    \n- ``!hastebin MESSAGE`` **Informations** : Publie sur Hastebin et envoie l'url. \n- ``!ping`` **Informations** : Tu obtiens ton ping. \n- ``!speedtest`` **Informations** : Effectue un speedtest du serveur. \
+    \n- ``!afk TIME`` **Informations** : Le bot avertie que tu es AFK. \n- ``!rappel TIME MESSAGE`` **Informations** : Lance un rappel. \n- ``!weather LOCALISATION`` **Informations** : Affiche la météo. \
+    \n- ``!spotify`` **Informations** : Affiche les infos du morceau jouer sur Spotify. \n- ``!itunes RECHERCHE`` **Informations** : Effectue une recherche d'un album. \n- ``!trad MOT LANGUE`` **Informations** : Traduit le mot donné. \
+    \n- ``!instagram LIEN DE PUBLICATION`` **Informations** : Affiche le post instagram.")
+    .addBlankField(true)
+    .addField("❯ :musical_note: Music Youtube", "- ``!youtube RECHERCHE`` **Informations** : Le bot va chercher la video sur youtube. \n- ``!yt LIEN`` **Informations** : Le bot va jouer l'audio de la video dans le channel vocal. \
+    \n- ``!stop`` **Informations** : Le bot se deconnecte du channel vocal et coupe la radio.")
+    .addBlankField(true)
+    .addField("❯ :radio: Radio","- ``!radiolist`` **Informations** : Affiche la liste des radios disponible et la commande pour les lancer. \n- ``!stop`` **Informations** : Le bot se deconnecte du channel vocal et coupe la radio.")
+    .addBlankField(true)
+    .addField("❯ :tada: Fun", "- ``!chuck`` **Informations** : Quote sur Chuck Norris. \n- ``!trump`` **Informations** : Quote sur Donald Trump. \n- ``!meme`` **Informations** : Le bot envoie un meme. \
+    \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé.")
+    .addBlankField(true)
+    .addField("❯ :slot_machine: Casino", "- ``!roulette COULEUR MONTANT`` **Informations** : Le bot lance la roulette. \n- ``!slots MONTANT`` **Informations** : Le bot lance la machine a sous. \
+    \n- ``!giveaway NOMBRE DE WINNERS TIME PRICE`` **Informations** : Le bot lance un giveaway. \n- ``!lotery NOMBRE DE WINNERS TIME MONTANT`` **Informations** : Le bot lance une lotery.")
+    .addBlankField(true)
+    .addField("❯ :underage: Nsfw", "- ``!boobs`` **Informations** : Le bot envoie une photo random de boobs. \n- ``!pussy`` **Informations** : Le bot envoie une photo random d'une pussy. \n- ``!gonewild`` **Informations** : Le bot envoie une photo random de gonewild. \
+    \n- ``!hentai`` **Informations** : Le bot envoie une photo random hentai. \n- ``!porngif`` **Informations** : Le bot envoie un porngif random. \n- ``!ass``  **Informations** : Le bot envoie une photo random d'un cul. \
+    \n- ``!hot`` **Informations** : Le bot envoie une photo random hot. \n- ``!young`` **Informations** : Le bot envoie une photo random d'une jeune. \n- ``!asiat`` **Informations** : Le bot envoie une photo random d'une asiat. \
+    \n- ``!milf`` **Informations** : Le bot envoie une photo random d'une milf. \n- ``!old`` **Informations** : Le bot envoie une photo random d'une vieille. \n- ``!ginger`` **Informations** : Le bot envoie une photo random d'une ginger.")
+    .addBlankField(true)
+    .addField("❯ :credit_card: Ecoin", "- ``!ecoin`` **Informations** : Affiche ton solde d'Ecoin disponible. \n- ``!pay @Username MONTANT`` **Informations** : vire le montant d'Ecoin au membre identifié. \
+    \n- ``!addecoin @Username MONTANT`` **Informations** : Ajoute des ecoin au membre sur la DB. **ONLY ADMIN**. \n- ``!removeecoin @Username MONTANT`` **Informations** : Retire des ecoin au membre sur la DB. **ONLY ADMIN**.")
     .setFooter(`Demandé par ${message.author.username}`)
 	.setTimestamp()
-    message.channel.send({embed: embed});
+    author.send({embed: embed});
+    message.delete().catch();
 }
 
 module.exports.help = {
-    name: "help"
+    name: "helpv2"
 }
