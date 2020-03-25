@@ -19,6 +19,10 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(`${target} Ta demande a bien été prise en compte, merci de patienter qu'un membre du STAFF vous approuve !`).then(msg => msg.delete(20000))
     approvedchannel.send(approvedEmbed);
     message.delete().catch();
+
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Le membre ${message.author.username} souhaite etre Approved`)
 }
 
 module.exports.help = {
