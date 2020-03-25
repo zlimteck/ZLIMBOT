@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const snekfetch = require('snekfetch');
 
 module.exports.run = async (bot, message, args) => {
-    try{
+    try {
         const query = args.join(" ");
         const {body} = await snekfetch
         .get('https://itunes.apple.com/search')
@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
         .setURL(data.collectionViewUrl)
         .setThumbnail(data.artworkUrl100)
         .setTitle(data.collectionName)
-        .addField('❯ Artist', data.artistName, true)
+        .addField('❯ Artiste(s)', data.artistName, true)
         .addField('❯ Album', data.collectionName, true)
         .addField('❯ Release Date', new Date(data.releaseDate).toDateString().split(' ')[2] + ' ' + new Date(data.releaseDate).toDateString().split(' ')[1] + ' ' + new Date(data.releaseDate).toDateString().split(' ')[3], true)
         .addField('❯ Genre', data.primaryGenreName, true)
@@ -37,6 +37,9 @@ module.exports.run = async (bot, message, args) => {
         }
         return message.channel.send(`Oh non, une erreur est survenue : \`${err.message}\`. Réessayez plus tard!`);
     }
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    
 }
 
 module.exports.help = {
