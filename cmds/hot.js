@@ -23,6 +23,9 @@ module.exports.run = async (bot, message, args) => {
     } catch (err) {
         return console.log(err);
     }
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+
 }
 
 module.exports.help = {
