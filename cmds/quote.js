@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 	const originalMessage = message;
 	const channel = message.guild.channels.get(args[1]);
 	if (args[0] === undefined) {
-		originalMessage.channel.send("Usage : !quote messageid channelid");
+		originalMessage.channel.send("Usage : !quote <messageid> <channelid>");
 	}
 	if (args[1] !== undefined) {
 		channel.fetchMessage(args[0])
@@ -24,6 +24,8 @@ module.exports.run = async (bot, message, args) => {
 			} else {originalMessage.channel.send({ embed });}
 		})
 		message.delete().catch();
+
+		console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
 
 		}
 	}
