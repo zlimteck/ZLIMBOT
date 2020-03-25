@@ -26,11 +26,14 @@ module.exports.run = (bot, message, args) => {
     .setTitle("Métamorphe")
     .setColor("#F7BA2A")
     .addField("Le membre", `${target}#${target.discriminator}`)
-    .addField("A était métamorphosé...", reponse)
+    .addField("A été métamorphosé...", reponse)
     .setFooter(`Demandé par ${message.author.username}`)
     .setTimestamp()
     message.channel.send({embed: embed});
     message.delete().catch();
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    
 }
 
 module.exports.help = {
