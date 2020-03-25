@@ -12,6 +12,9 @@ module.exports.run = async (bot, message, args) => {
     .setTimestamp()
     target.send({embed: embed});
     message.author.send(`${message.author} La réponse a la requête a bien était envoyé a ${target}`)
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    
 }
 
 module.exports.help = {
