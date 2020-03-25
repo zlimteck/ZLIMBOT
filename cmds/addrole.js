@@ -28,8 +28,8 @@ module.exports.run = async (bot, message, args, lang) => {
     message.delete().catch();
     user.send(`Félicitations tu obtiens le rôle ${foundRole.name}`)
 
-     console.log(`Ajout du role ${foundRole.name} a ${user} effectué par ${message.author.username} le ${message.createdAt}`)
      console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+     console.log(`Ajout du role ${foundRole.name} a ${user} effectué par ${message.author.username} le ${message.createdAt}`)
 
 };
 
