@@ -9,6 +9,9 @@ module.exports.run = async (bot, message, args) => {
     let number = Math.floor(Math.random() * 99) + 1;
     message.channel.send(`Entre ${member1.user.username} et ${member2.user.username}, il y a ${number}% d'amour ! :heart:`)
     message.delete().catch();
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    
 }
 
 module.exports.help = {
