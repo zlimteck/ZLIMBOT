@@ -33,6 +33,9 @@ module.exports.run = async (bot, message, args) => {
  
     var embedSend = await message.channel.send(giveawayEmbed);
     embedSend.react("🎉");
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Nouveau giveaway lancé par ${message.author.username} Time: ${args[1]} Price: ${price}`)
  
     setTimeout(function () {
  
@@ -79,10 +82,12 @@ module.exports.run = async (bot, message, args) => {
  
         for (var i = 0; i < winners.length; i++) {
             message.channel.send("Bravo " + winners[i] + ` tu as gagné **${price}** !`);
+
+            console.log(`Giveaway gagné par ${winners[i]}`)
+            
         }
  
     }, ms(time))
- 
  
 }
  
