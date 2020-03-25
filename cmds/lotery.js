@@ -36,6 +36,9 @@ module.exports.run = async (bot, message, args) => {
  
     var embedSend = await message.channel.send(loteryEmbed);
     embedSend.react("🏷️");
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Nouvelle lotery lancé par ${message.author.username} Time: ${time} Ecoin: ${price}`)
  
     setTimeout(function () {
  
@@ -105,6 +108,7 @@ module.exports.run = async (bot, message, args) => {
             .setFooter("Merci a tout les participant")
             .setTimestamp()
             message.channel.send(loteryEmbed);
+            console.log(`Lotery gagnée par ${winners[i]}`)
         }
     }, ms(time)) 
 }
