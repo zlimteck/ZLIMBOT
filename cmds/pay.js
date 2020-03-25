@@ -4,7 +4,7 @@ const fs = require("fs");
 const errors = require("../utils/errors.js");
 
 module.exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
+  //if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
 
     if (!coins[message.author.id]){
       return message.reply("Tu n'as pas d'Ecoin dans ton portefeuille !")
@@ -26,7 +26,6 @@ module.exports.run = async (bot, message, args) => {
     let sCoins = coins[message.author.id].coins;
     let Ecoin = coins[message.author.id].coins;
 
-    //if (!args[0] || !args[1] || args[0 == "null"]) return message.reply("Aucun montant d'Ecoin rentré !");
     if (!args[1] || args[1 == "null"]) return message.reply("Aucun montant d'Ecoin rentré !");
 
     if (args[1] == pUser) return message.reply("Usage: !pay @username montant");
@@ -47,7 +46,6 @@ module.exports.run = async (bot, message, args) => {
     let embed = new Discord.RichEmbed()
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .setThumbnail("https://imgur.com/yARdHmJ.jpg")
-    //.addField("Virement", `${message.author} a effectué un virement de ${args[1]} Ecoin a ${pUser} !`)
     .addField("Virement pour:", `${pUser}`, true)
     .addField("Montant:", `${args[1]} Ecoin`, true) 
     .setFooter(`Virement de ${message.author.username} traité par E Corp !`)
@@ -55,13 +53,13 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(embed);
     pUser.send({embed: embed});
     message.delete().catch();
-    //message.channel.send(`${message.author} a envoyé a ${pUser} ${args[1]} Ecoin.`);
 
     fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
       if(err) cosole.log(err)
     });
 
-    //message.delete().catch();
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Virement de ${message.author.username} pour ${pUser} d'un montant de ${args[1]} Ecoin`)
 
   }
 
