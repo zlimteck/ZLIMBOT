@@ -26,6 +26,10 @@ module.exports.run = async (bot, message, args) => {
     message.delete().catch(O_o=>{});
     message.guild.member(kickUser).kick(kickReason);
     kickChannel.send(kickEmbed);
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Le membre ${kickUser} a etait kick du serveur ${message.guild.name} pour la raison suivante: ${kickReason} ! le ${message.createdAt}`)
+
 }
 
 module.exports.help = {
