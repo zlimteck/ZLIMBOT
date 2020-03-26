@@ -9,20 +9,23 @@ module.exports.run = async (bot, message) => {
         const trackAuthor = user.presence.game.state;
         const trackAlbum = user.presence.game.assets.largeText;
         let embed = new Discord.RichEmbed()
-        .setAuthor("Spotify Track Info", "https://cdn.discordapp.com/emojis/408668371039682560.png")
+        .setAuthor("Spotify Musique Infos", "https://cdn.discordapp.com/emojis/408668371039682560.png")
         .setColor("#1ED760")
         .setThumbnail(trackIMG)
-        .addField("Song Name", trackName)
+        .addField("Musique", trackName)
         .addField("Album", trackAlbum, true)
-        .addField("Author", trackAuthor)
-        .addField("Listen to Track:", `[\`${trackURL}\`](trackURL)`)
+        .addField("Artiste(s)", trackAuthor)
+        .addField("Ecouter cette musique:", `[\`${trackURL}\`](trackURL)`)
         .setFooter(`Demandé par ${message.author.username}`)
         .setTimestamp()
         message.channel.send({embed: embed});
         message.delete().catch();
     } else {
-        message.channel.send("Ce membre n'écoute pas Spotify!");
+        message.channel.send("Vous n'écoutez rien actuellement sur Spotify!");
     }
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    
 };
 
 module.exports.help = {
