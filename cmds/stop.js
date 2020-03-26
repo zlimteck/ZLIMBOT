@@ -4,13 +4,9 @@ const YTDL = require("ytdl-core");
 
 module.exports.run = async (bot, message, args, ops) => {
     if (!message.member.hasPermission("STREAM")) return errors.noPerms(message, "STREAM");
-    //message.delete().catch();
     if (!message.member.voiceChannel) return errors.noinchanvocal(message);
-    //message.delete().catch();
     if (!message.guild.me.voiceChannel) return errors.botpresence(message);
-    //message.delete().catch();
     if (!message.guild.me.voiceChannelID) return errors.noevenchan(message);
-    //message.delete().catch();
     message.guild.me.voiceChannel.leave();
     let stopembed = new Discord.RichEmbed()
     .setTitle("**Déconnexion**")
@@ -18,8 +14,9 @@ module.exports.run = async (bot, message, args, ops) => {
     .setFooter(`Déconnexion effectuée par ${message.author.username}`)
     message.channel.send(stopembed);
     message.delete().catch();
-    //message.channel.send('Fin de la lecture, déconnexion du channel vocal ...');
-    //message.delete().catch();
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+
 }
 
 module.exports.help = {
