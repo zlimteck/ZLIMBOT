@@ -6,6 +6,10 @@ module.exports.run = async (bot, message, args) => {
     let botmessage = args.join(" ");
     message.delete().catch();
     message.channel.send(botmessage);
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Message envoyer via le bot par ${message.author.username}`)
+    
 }
 
 module.exports.help = {
