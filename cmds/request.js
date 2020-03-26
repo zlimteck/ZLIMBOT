@@ -15,6 +15,9 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(`${message.author} Ta requête a bien été prise en compte, tu recevras un MP quand celle-ci sera complétée !`);
     requestchannel.send(embed);
     message.delete().catch();
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    
 }
 
 module.exports.help = {
