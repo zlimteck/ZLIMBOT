@@ -45,8 +45,6 @@ CREATE TABLE xp (id VARCHAR(30) NOT NULL, xp INT NOT NULL);
   </a>
 </p>
 
-[Node.js](https://nodejs.org/en/) [npm](https://www.npmjs.com/get-npm) [Discord.js](https://discord.js.org/#/)
-
 # Installation des modules
 
 `npm install` pour installer la totalité des modules present dans le [package.json](https://github.com/GrimZam/GRIMBOT/blob/master/package.json)
