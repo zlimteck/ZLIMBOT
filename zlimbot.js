@@ -47,7 +47,7 @@ fs.readdir("./radios/",(err, files) => {
 
 bot.on ("ready", async () => {
     bot.user.setPresence({ game: { name: "!help | Bot Admin", type: 0} });
-    console.log(`${bot.user.username} est connecté sur ${bot.guilds.size} serveurs!`);
+    console.log(`${bot.user.username} est connecté sur ${bot.guilds.size} serveurs !`);
     console.log(bot.commands);
 
     bot.on ("ready", async bot => {
@@ -137,12 +137,13 @@ bot.on("messageUpdate", async (oldMessage, newMessage) => {
 });
 
 bot.on("guildMemberAdd", async (member, message, args, bot, channels) => {
-    console.log(`${member.id} a rejoins le serveur.`);
+    console.log(`Le membre ${member.id} a rejoins le serveur.`);
     var joinedchannel = member.guild.channels.find(joinedchannel => joinedchannel.name === "joined_leave");
     joinedchannel.send(`:eyes: Hey regardez ${member} a rejoins le serveur! :slight_smile:`);
     var role = member.guild.roles.find(role => role.name === "USER");
     member.addRole(role)
     member.send(`${member} bienvenue sur notre serveur Discord ! \nTu obtiens le rôle ${role.name}. \nTu peut demander a etre membre approuvé a l'aide la commande suivante : < !approved @TONPSEUDO > dans le salon général du serveur.`)
+    console.log(`${member} obtiens le role ${role.name}`)
     if (!coins[member.id]){
         coins[member.id] = {
           coins: 0
@@ -163,6 +164,9 @@ bot.on("guildMemberAdd", async (member, message, args, bot, channels) => {
         .setFooter(`Offert par E Corp !`)
         .setTimestamp()
         member.send({embed: embed});
+
+        console.log(`${member} obtiens 5000 Ecoin`)
+
 });
 
 bot.on("guildMemberRemove", async member => {
@@ -231,6 +235,7 @@ if(nxtLvl <= xp[message.author.id].xp){
   .addField("Total Xp :", curxp);
 
   message.channel.send(lvlup)
+  console.log(`${message.author} viens de level up`)
 }
 
 // NOT STABLE FIX SOON !!
