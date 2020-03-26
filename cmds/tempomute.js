@@ -42,10 +42,15 @@ module.exports.run = async (bot, message, args) => {
     let mutetime = args[1];
     if (!mutetime) return message.reply("Tu n'as pas spécifié de temps!");
     message.delete().catch();
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+
     try {
-        tomute.send(`<@${tomute.id}>, vous avez été muted sur le serveur **${message.guild.name}** pendant **${mutetime}** pour la raison suivante: **${raison}**. En conséquence tu perds le Role **@USERS** le temps du mute. `)    
+        tomute.send(`<@${tomute.id}>, vous avez été muted sur le serveur **${message.guild.name}** pendant **${mutetime}** pour la raison suivante: **${raison}**. En conséquence tu perds le Role **@USERS** le temps du mute. `)
+        console.log(`${tomute.id} a été mute pendant ${mutetime} sur le serveur ${message.guild.name} pour la raison suivante: ${raison}`)    
     }catch(e){
         message.channel.send(`<@${tomute.id}> a été muted du serveur **${message.guild.name}** pendant **${mutetime}** pour la raison suivante: **${raison}**. En conséquence il perd le Role **@USERS** le temps du mute. `)
+        console.log(`${tomute.id} a été mute pendant ${mutetime} sur le serveur ${message.guild.name} pour la raison suivante: ${raison}`)
     }
 
     let muteembed = new Discord.RichEmbed()
@@ -62,10 +67,12 @@ module.exports.run = async (bot, message, args) => {
     await (tomute.addRole(muterole.id), tomute.removeRole(userrole.id));
     await (tomute.addRole(muterole.id), tomute.removeRole(nsfwrole.id));
     await (tomute.addRole(muterole.id), tomute.removeRole(approvedrole.id));
+    console.log(`${tomute.id} a perdu ses roles et obtiens le role MUTED`)
     setTimeout(function(){
-        tomute.removeRole(muterole.id);
-        tomute.addRole(userrole.id);
+        tomute.removeRole(muterole.id); console.log(`${tomute.id} a perdu le role ${muterole.id}`)
+        tomute.addRole(userrole.id); console.log(`${tomute.id} a recupere le role ${userrole.id}`)
         tomute.send(`<@${tomute.id}>, vous avez été unmuted sur le serveur **${message.guild.name}** tu récupére donc le Role **@USERS**. Vous devrez cependant refaire une demande pour le role **@APPROVED** et **@NSFW**.`);
+        console.log(`${tomute.id} a été unmuted du serveur ${message.guild.name}`)
     }, ms(mutetime));
 }
 
