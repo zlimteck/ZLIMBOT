@@ -45,7 +45,7 @@ CREATE TABLE xp (id VARCHAR(30) NOT NULL, xp INT NOT NULL);
   </a>
 </p>
 
-[![Foo](https://img.shields.io/badge/Discord.js-Download-%232196f3&?style=flat-square&logo=appveyor)](https://discord.js.org/#/)
+[![Foo](https://img.shields.io/badge/Discord.js-Download-%232196f3&?style=flat-square&logo=appveyor)](https://discord.js.org/#/) {:target="_blank"}
 
 # Installation des modules
 
