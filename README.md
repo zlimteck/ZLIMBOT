@@ -33,19 +33,9 @@ CREATE TABLE xp (id VARCHAR(30) NOT NULL, xp INT NOT NULL);
 
 # Prérequis
 
-<p>
-  <a href="https://nodejs.org/en">
-    <img alt="Node.js" src="https://img.shields.io/badge/Node.js-Download-3ADC1A&?style=flat-square&logo=appveyor" target="_blank" />
-  </a>
-    <a href="https://www.npmjs.com/get-npm">
-    <img alt="npm" src="https://img.shields.io/badge/npm-Download-E13A18&?style=flat-square&logo=appveyor" target="_blank" />
-  </a>
-    <a href="https://discord.js.org/#/">
-    <img alt="Discord.js" src="https://img.shields.io/badge/Discord.js-Download-%232196f3&?style=flat-square&logo=appveyor" target="_blank" />
-  </a>
-</p>
-
-[![Foo](https://img.shields.io/badge/Discord.js-Download-%232196f3&?style=flat-square&logo=appveyor)](https://discord.js.org/#/) {:target="_blank"}
+[![Foo](https://img.shields.io/badge/Node.js-Download-3ADC1A&?style=flat-square&logo=appveyor)](https://nodejs.org/en)
+[![Foo](https://img.shields.io/badge/npm-Download-E13A18&?style=flat-square&logo=appveyor)](https://www.npmjs.com/get-npm)
+[![Foo](https://img.shields.io/badge/Discord.js-Download-%232196f3&?style=flat-square&logo=appveyor)](https://discord.js.org/#/)
 
 # Installation des modules
 
