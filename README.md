@@ -51,6 +51,6 @@ Installer [nodemon](https://nodemon.io/) `npm install -g nodemon` et ensuite lan
 
 <p>
   <a href="">
-    <img alt="Twitter: JooDcrt" src="https://img.shields.io/badge/twitter-follow-blue" target="_blank" />
+    <img alt="Twitter: JooDcrt" src="https://img.shields.io/badge/twitter-follow-blue?style=flat&logo=appveyor" target="_blank" />
   </a>
 </p>
