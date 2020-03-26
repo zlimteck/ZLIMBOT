@@ -20,7 +20,11 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send({embed: embed});
         Awaitmessage.delete().catch();
         message.delete().catch();
+        console.log(`Resultat du speedtest du serveur ${data.client.isp}: Ping: ${data.server.ping} Download: ${data.speeds.download} Mbps Upload: ${data.speeds.upload} Mbps`)
     });
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+
 }
 
 module.exports.help = {
