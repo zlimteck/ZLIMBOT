@@ -42,6 +42,7 @@ module.exports.run = async (bot, message, args) => {
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err)
+          console.log(`${message.author.username} gagne ${money} ecoin en ayant misé ${args[0]} a la roulette`)
         });
     } else if (isOdd(random) && colour == 1) {
         money = money * 2
@@ -59,6 +60,7 @@ module.exports.run = async (bot, message, args) => {
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err)
+          console.log(`${message.author.username} gagne ${money} ecoin en ayant misé ${args[0]} a la roulette`)
         });
     } else if (!isOdd(random) && colour == 0) {
         money = money * 2
@@ -76,6 +78,7 @@ module.exports.run = async (bot, message, args) => {
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err) ;
+          console.log(`${message.author.username} gagne ${money} ecoin en ayant misé ${args[0]} a la roulette`)
         });
     } else {
       let curBal4 = coins[message.author.id].coins
@@ -92,8 +95,12 @@ module.exports.run = async (bot, message, args) => {
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err)
+          console.log(`${message.author.username} perd ${money} ecoin en ayant misé ${args[0]} a la roulette`)
         });
     }
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+
 }
     module.exports.help = {
       name:"roulette"
