@@ -38,7 +38,8 @@ if (!money) return message.channel.send(`Usage: \!slots <amount>`)
     .addField("Tu remportes:", `${money} Ecoin`, true)
     .setFooter(`${message.author.username} Tu as gagné !`, bicon);
     message.channel.send(embed);
-    message.delete().catch();    
+    message.delete().catch(); 
+    console.log(`${message.author.username} gagne ${money} ecoin en ayant misé ${args[0]} a la machine a sous`)   
   } else {
     money = money 
     let curBal2 = coins[message.author.id].coins;
@@ -56,7 +57,11 @@ if (!money) return message.channel.send(`Usage: \!slots <amount>`)
     .setFooter(`${message.author.username} Tu as perdu!`, bicon);
     message.channel.send(embed);
     message.delete().catch();
+    console.log(`${message.author.username} perd ${money} ecoin en ayant misé ${args[0]} a la machine a sous`)  
   }
+
+  console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+  
 }
 
 module.exports.help = {
