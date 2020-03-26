@@ -20,8 +20,14 @@ module.exports.run = async (bot, message, args) => {
 
   try {
     message.author.send({embed: embed})
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Rappel crée par ${message.author.username} Raison: ${raison} Time: ${time}`)
+  
   }catch(e) {
-    message.channel.send({embed: embed})}
+    message.channel.send({embed: embed})
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Rappel crée par ${message.author.username} Raison: ${raison} Time: ${time}`)
+  }
 
     setTimeout(() => {
       let embed = new Discord.RichEmbed()
@@ -33,8 +39,12 @@ module.exports.run = async (bot, message, args) => {
       .setFooter(`Rappel crée par ${message.author.username}`)
       try {
         message.author.send({embed: embed})
+        console.log(`Rappel effectué a ${message.author.username} Raison: ${raison} Time: ${time}`)
       }catch(e) {
-        message.channel.send({embed: embed})}
+        message.channel.send({embed: embed})
+        console.log(`Rappel effectué a ${message.author.username} Raison: ${raison} Time: ${time}`)
+      
+      }
       }, ms(time))
   }
 
