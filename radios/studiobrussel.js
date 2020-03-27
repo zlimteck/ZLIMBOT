@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const ffmpeg = require("ffmpeg-binaries");
 const opusscript = require("opusscript");
 
 module.exports.run = async (bot, message, args) => {
@@ -22,6 +21,10 @@ module.exports.run = async (bot, message, args) => {
     } else {
         message.reply('Tu dois etre dans un channel vocal !');
     }
+
+    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`${bot.user.username} a rejoint un salon vocal`)
+    
 };
 
 module.exports.help = {
