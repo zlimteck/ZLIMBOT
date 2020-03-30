@@ -11,8 +11,9 @@ module.exports.run = async (bot, message, args) => {
 
     let colour = args[0];
     let money = args[1];
+    let bicon = message.author.displayAvatarURL;
 
-    if (!money) return message.channel.send(`Usage: \`!roulette <noir, rouge, bleu> <amount>\`\nMontant max jouable : **1000 Ecoin**\nChoisissez n'importe laquelle des couleurs que vous voulez ... mais certaines sont plus susceptibles que d'autres ...\n**Le noir est pour les nombres pairs**... **et rouge est pour impair**... ces deux éléments vous fourniront **2x votre montant initial**.\nPrenez un risque et choisissez **Bleu** et vous obtiendrez **20x le montant d'argent** ... mais c'est 1 chance sur 37. `);
+    if (!money) return message.channel.send("**Usage:** `!roulette COULEUR MONTANT` \nCOULEUR = Noir | Rouge | Bleu \nMONTANT = MISE ECOIN \nMise max jouable : **1000 Ecoin**\n**Informations:** Choisissez n'importe laquelle des couleurs que vous voulez ... mais certaines sont plus susceptibles que d'autres ...\n**Le noir est pour les nombres pairs**... **et rouge est pour impair**... ces deux éléments vous fourniront **2x votre montant initial**.\nPrenez un risque et choisissez **Bleu** et vous obtiendrez **20x le montant d'argent** ... mais c'est 1 chance sur 37. ");
     if (isNaN(money)) return message.channel.send(`**${message.author.username}**, Merci d'entré un montant valide !`);
     if (money > 1000) money = 1000;
     if (coins[message.author.id].coins < money) return message.channel.send(`**${message.author.username}**, Tu ne peux pas jouer ce montant, tu n'as pas ce montant d'Ecoin!`);
@@ -33,12 +34,13 @@ module.exports.run = async (bot, message, args) => {
         fs.writeFile('./ecoin.json', JSON.stringify(coins, null, 2), (err) => {
           let embed = new Discord.RichEmbed()
           .setColor("#0023FF")
-          .setAuthor(message.author.tag, message.author.displayAvatarURL)
-          .setTitle("**🎉 Winner JACKPOT 🎉**")
+          .setTitle("**🔵 Roulette 🔵**")
           .addField("Couleur misé:", args[0], true)
+          .addField("Ecoin misé:", `${args[1]} Ecoin`, true)
           .addField("Numéro:", random, true)
-          .addField("Tu remportes:", `${money} Ecoin`)
-          .setTimestamp()
+          .addField("Tu remportes:", `${money} Ecoin`, true)
+          .setImage("https://i.imgur.com/0yPKepJ.png")
+          .setFooter(`${message.author.username} Tu as gagné !`, bicon);
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err)
@@ -51,12 +53,13 @@ module.exports.run = async (bot, message, args) => {
         fs.writeFile('./ecoin.json', JSON.stringify(coins, null, 2), (err) => {
           let embed = new Discord.RichEmbed()
           .setColor("#ff0000")
-          .setAuthor(message.author.tag, message.author.displayAvatarURL)
-          .setTitle("**🎉 Winner 🎉**")
+          .setTitle("**🔴 Roulette 🔴**")
           .addField("Couleur misé:", args[0], true)
+          .addField("Ecoin misé:", `${args[1]} Ecoin`, true)
           .addField("Numéro:", random, true)
-          .addField("Tu remportes:", `${money} Ecoin`)
-          .setTimestamp()
+          .addField("Tu remportes:", `${money} Ecoin`, true)
+          .setImage("https://i.imgur.com/0yPKepJ.png")
+          .setFooter(`${message.author.username} Tu as gagné !`, bicon);
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err)
@@ -69,12 +72,13 @@ module.exports.run = async (bot, message, args) => {
         fs.writeFile('./ecoin.json', JSON.stringify(coins, null, 2), (err) => {
           let embed = new Discord.RichEmbed()
           .setColor("#000000")
-          .setAuthor(message.author.tag, message.author.displayAvatarURL)
-          .setTitle("**🎉 Winner 🎉**")
+          .setTitle("**⚫ Roulette ⚫**")
           .addField("Couleur misé:", args[0], true)
+          .addField("Ecoin misé:", `${args[1]} Ecoin`, true)
           .addField("Numéro:", random, true)
-          .addField("Tu remportes:", `${money} Ecoin`)
-          .setTimestamp()
+          .addField("Tu remportes:", `${money} Ecoin`, true)
+          .setImage("https://i.imgur.com/0yPKepJ.png")
+          .setFooter(`${message.author.username} Tu as gagné !`, bicon);
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err) ;
@@ -86,12 +90,13 @@ module.exports.run = async (bot, message, args) => {
         fs.writeFile('./ecoin.json', JSON.stringify(coins, null, 2), (err) => {
           let embed = new Discord.RichEmbed()
           .setColor("#76685E")
-          .setAuthor(message.author.tag, message.author.displayAvatarURL)
-          .setTitle("**🎉 Lost 🎉**")
+          .setTitle("**⚫ 🔴 🔵 Roulette 🔵 🔴 ⚫**")
           .addField("Couleur misé:", args[0], true)
+          .addField("Ecoin misé:", `${args[1]} Ecoin`, true)
           .addField("Numéro:", random, true)
-          .addField("Tu perds:", `${money} Ecoin`)
-          .setTimestamp()
+          .addField("Tu perds:", `${money} Ecoin`, true)
+          .setImage("https://i.imgur.com/VvKueSu.png")
+          .setFooter(`${message.author.username} Tu as perdu!`, bicon);
           message.channel.send(embed);
           message.delete().catch();
           if(err) console.log(err)
