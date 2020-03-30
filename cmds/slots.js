@@ -17,9 +17,10 @@ let result3 = Math.floor((Math.random() * slots.length));
 let bicon = message.author.displayAvatarURL;
 let money = (args[0]);
 
-if (!money) return message.channel.send(`Usage: \!slots <amount>`)
+if (!money) return message.channel.send("**Usage:** ``!slots MONTANT`` \n MONTANT = MISE ECOIN"); 
   if (isNaN(money)) return message.channel.send(`**${message.author.username}**, Merci d'entré un montant valide !`);
   if (coins[message.author.id].coins < money) return message.channel.send(`**${message.author.username}**, Tu ne peux pas jouer ce montant, tu n'as pas ce montant d'Ecoin!`);
+
   if (money > 1000) money = 1000;
 
    if (slots[result1] === slots[result2] && slots[result3]) {
@@ -32,10 +33,11 @@ if (!money) return message.channel.send(`Usage: \!slots <amount>`)
     let embed = new Discord.RichEmbed()
     .setTitle(':slot_machine: Machine a Sous :slot_machine:')
     .setColor("#F7BA2A")
-    .setDescription('SLOTS: :apple: | :green_apple: | :cherries: | :strawberry: | :lemon: \n Il faut au minimum 2 items identique pour gagner la partie !')
+    .setDescription('SLOTS: :apple: | :green_apple: | :cherries: | :strawberry: | :lemon: \n Il faut au minimum 2 items identique a la suite pour gagner la partie !')
     .addField('Resultat:', slots[result1] + slots[result2] + slots[result3], false)
     .addField("Tu as misé:", `${args[0]} Ecoin`, true )
     .addField("Tu remportes:", `${money} Ecoin`, true)
+    .setImage("https://i.imgur.com/0yPKepJ.png")
     .setFooter(`${message.author.username} Tu as gagné !`, bicon);
     message.channel.send(embed);
     message.delete().catch(); 
@@ -50,10 +52,11 @@ if (!money) return message.channel.send(`Usage: \!slots <amount>`)
     let embed = new Discord.RichEmbed()
     .setTitle(':slot_machine: Machine a Sous :slot_machine:')
     .setColor("#ff0000")
-    .setDescription('SLOTS: :apple: | :green_apple: | :cherries: | :strawberry: | :lemon: \n Il faut au minimum 2 items identique pour gagner la partie !')
+    .setDescription('SLOTS: :apple: | :green_apple: | :cherries: | :strawberry: | :lemon: \n Il faut au minimum 2 items identique a la suite pour gagner la partie !')
     .addField('Resultat', slots[result1] + slots[result2] + slots[result3], false)
     .addField("Tu as misé:", `${args[0]} Ecoin`, true)
     .addField("Tu perd:", `${money} Ecoin`, true)
+    .setImage("https://i.imgur.com/VvKueSu.png")
     .setFooter(`${message.author.username} Tu as perdu!`, bicon);
     message.channel.send(embed);
     message.delete().catch();
