@@ -6,6 +6,7 @@ const bot = new Discord.Client({disableEveryone: true})
 const mysql = require("mysql");
 let xp = require("./xp.json");
 let coins = require("./ecoin.json");
+let messages = require("./messages.json");
 
 bot.commands = new Discord.Collection();
 
@@ -46,16 +47,23 @@ fs.readdir("./radios/",(err, files) => {
 });
 
 bot.on ("ready", async () => {
-    bot.user.setPresence({ game: { name: "!help | Bot Admin", type: 0} });
+    console.log(`${bot.user.username} est maintenant actif !`);
     console.log(`${bot.user.username} est connecté sur ${bot.guilds.size} serveurs !`);
-    console.log(bot.commands);
-
-    bot.on ("ready", async bot => {
-        console.log(`GRIMBOT est maintenant actif!`);
-    });
+    //console.log(bot.commands);
+    bot.user.setActivity("!help", {type: "GAME"});
+    let activNum = 0;
+    setInterval(function() {
+        if (activNum === 0) {
+            bot.user.setActivity("Bot Admin")
+            activNum = 1
+        } else if (activNum === 1) {
+            bot.user.setActivity("!help pour obtenir les cmds")
+            activNum = 0
+        }
+    }, 3 * 1000);
 });
 
-bot.on("message", async (message) => {
+bot.on("message", async (message, guild, name, channel) => {
     if (!message.guild) return;
     if (!message.content) return;
     var logschannel = message.guild.channels.find(logschannel => logschannel.name === "logs")
@@ -193,6 +201,18 @@ function generateXp() {
     return Math.floor(Math.random() * (max - min + 1)) +min;
 }
 
+function generateEcoin() {
+    let min = 1;
+    let max = 1;
+    return Math.floor(Math.random() * (max - min + 1)) +min;
+}
+
+function generateMessages() {
+    let min = 1;
+    let max = 1;
+    return Math.floor(Math.random() * (max - min + 1)) +min;
+}
+
 bot.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
@@ -238,27 +258,20 @@ if(nxtLvl <= xp[message.author.id].xp){
   console.log(`${message.author} viens de level up`)
 }
 
-// NOT STABLE FIX SOON !!
-
-//if (curlvl <= xp[message.author.id].level) {
-//    xp[message.author.id].level * 5;
-  
-//    let addrankup = message.member;
-//    let vipmember = message.guild.roles.find(`name`, "VIP");
-//    addrankup.addRole(vipmember.id).catch(console.error);
-//    message.channel.send(`Félicitations tu as atteint le level 5 tu obtiens donc le rôle VIP qui te donnes accés au channel shout-vip !`)
-//    var logschannel = message.guild.channels.find(logschannel => logschannel.name === "logs");
-//    if (!logschannel) return message.channel.send("Impossible de trouver le salon logs.");
-//    await (addrankup.addRole(vipmember.id));
-//    const logembed = new Discord.RichEmbed()
-//    .setDescription(`Rôle: ${vipmember.name} assigné a ${message.member} par ZLIMBOT`)
-//    .setColor("#F8F9F9")
-//    .setTimestamp()
-//    logschannel.send(logembed);
-//}
-
 fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
   if(err) console.log(err)
+});
+
+con.query(`SELECT * FROM ecoin WHERE id = '${message.author.id}'`, (err, rows) => {
+    if (err) throw err;
+    let sql;
+    if (rows.length < 1) {
+        sql = `INSERT INTO ecoin (id, ecoin) VALUES ('${message.author.id}', ${generateEcoin()})`;
+    } else {
+        let ecoin = rows[0].ecoin;
+        sql = `UPDATE ecoin SET ecoin = ${ecoin + generateEcoin()} WHERE id = '${message.author.id}'`;
+    }
+    con.query(sql);
 });
 
 if(!coins[message.author.id]){
@@ -277,6 +290,56 @@ if(!coins[message.author.id]){
   fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
     if (err) console.log(err)
     });
+
+    con.query(`SELECT * FROM messages WHERE id = '${message.author.id}'`, (err, rows) => {
+        if (err) throw err;
+        let sql;
+        if (rows.length < 1) {
+            sql = `INSERT INTO messages (id, messages) VALUES ('${message.author.id}', ${generateMessages()})`;
+        } else {
+            let messages = rows[0].messages;
+            sql = `UPDATE messages SET messages = ${messages + generateMessages()} WHERE id = '${message.author.id}'`;
+        }
+        con.query(sql);
+    });
+
+
+if(!messages[message.author.id]){
+    messages[message.author.id] = {
+        messages: 0
+    };
+}
+
+let messagesAmt = Math.floor(Math.random() * 1) + 1;
+let baseAmt = Math.floor(Math.random() * 1) + 1;
+let curmsg = messages[message.author.id].messages;
+
+if(messagesAmt === baseAmt){
+    messages[message.author.id] = {
+        messages: messages[message.author.id].messages + messagesAmt
+    }
+    // if (curmsg <= messages[message.author.id].messages) {
+    //     messages[message.author.id].messages * 30;
+  
+    //     let addrankup = message.member;
+    //     let vipmember = message.guild.roles.find(role => role.name === "VIP");
+    //     addrankup.addRole(vipmember.id).catch(console.error);
+    //     message.channel.send(`Félicitations tu as envoyé 30 messages tu obtiens donc le rôle VIP qui te donnes accés au channel shout-vip !`)
+    //     var logschannel = message.guild.channels.find(logschannel => logschannel.name === "logs");
+    //     if (!logschannel) return message.channel.send("Impossible de trouver le salon logs.");
+    //     await (addrankup.addRole(vipmember.id));
+    //     const logembed = new Discord.RichEmbed()
+    //     .setDescription(`Rôle: ${vipmember.name} assigné a ${message.member} par ZLIMBOT`)
+    //     .setColor("#F8F9F9")
+    //     .setTimestamp()
+    //     logschannel.send(logembed);
+    // }
+    fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
+        if (err) console.log(err)
+        console.log(`Nouvelle valeur dans messages.json.`)
+    });
+}
+
 }
 
     let messageArray = message.content.split(" ");
