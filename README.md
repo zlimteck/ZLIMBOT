@@ -27,9 +27,12 @@ var con = mysql.createConnection({
 CREATE DATABASE "NOM DE VOTRE DATABASE";
 USE "NOM DE VOTRE DATABASE";
 CREATE TABLE xp (id VARCHAR(30) NOT NULL, xp INT NOT NULL);
+CREATE TABLE ecoin (id VARCHAR(30) NOT NULL, ecoin INT NOT NULL);
+CREATE TABLE messages (id VARCHAR(30) NOT NULL, messages INT NOT NULL);
 ```
 
-(Comprend juste l'xp, les lvl et les ecoin ainsi que l'xp sont stocker dans un .json).
+(Attention via la DB ca stock uniquement les informations , pour le moments toutes les commandes utilisent les .json).
+
 
 # Prérequis
 
