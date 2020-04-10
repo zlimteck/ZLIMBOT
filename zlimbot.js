@@ -49,7 +49,6 @@ fs.readdir("./radios/",(err, files) => {
 bot.on ("ready", async () => {
     console.log(`${bot.user.username} est maintenant actif !`);
     console.log(`${bot.user.username} est connecté sur ${bot.guilds.size} serveurs !`);
-    //console.log(bot.commands);
     bot.user.setActivity("!help", {type: "GAME"});
     let activNum = 0;
     setInterval(function() {
@@ -144,13 +143,18 @@ bot.on("messageUpdate", async (oldMessage, newMessage) => {
     logschannel.send(logembed);
 });
 
-bot.on("guildMemberAdd", async (member, message, args, bot, channels) => {
-    console.log(`Le membre ${member.id} a rejoins le serveur.`);
+bot.on("guildMemberAdd", async (member, message) => {
+    console.log(`Le membre ${member.id} a rejoins le serveur ${member.guild.name}.`);
     var joinedchannel = member.guild.channels.find(joinedchannel => joinedchannel.name === "joined_leave");
-    joinedchannel.send(`:eyes: Hey regardez ${member} a rejoins le serveur! :slight_smile:`);
+    let joinedchannelembed = new Discord.RichEmbed()
+    .setColor("#9fb5fe")
+    .setTitle("**Arrivé**")
+    .setDescription(`${member} a rejoins ${member.guild.name}`)
+    .setImage("https://i.imgur.com/ziEAuZV.png")
+    joinedchannel.send(joinedchannelembed);
     var role = member.guild.roles.find(role => role.name === "USER");
     member.addRole(role)
-    member.send(`${member} bienvenue sur notre serveur Discord ! \nTu obtiens le rôle ${role.name}. \nTu peut demander a etre membre approuvé a l'aide la commande suivante : < !approved @TONPSEUDO > dans le salon général du serveur.`)
+    member.send(`${member} bienvenue sur ${member.guild.name} ! \nTu obtiens le rôle ${role.name}. \nTu peut demander a etre membre approuvé a l'aide la commande suivante : < !approved @TONPSEUDO > dans le salon général du serveur.`)
     console.log(`${member} obtiens le role ${role.name}`)
     if (!coins[member.id]){
         coins[member.id] = {
@@ -177,10 +181,15 @@ bot.on("guildMemberAdd", async (member, message, args, bot, channels) => {
 
 });
 
-bot.on("guildMemberRemove", async member => {
-    console.log(`${member.id} a quitté le serveur.`);
+bot.on("guildMemberRemove", async (member, message) => {
+    console.log(`${member.id} a quitté le serveur ${member.guild.name}.`);
     var joinedchannel = member.guild.channels.find(joinedchannel => joinedchannel.name === "joined_leave");
-    joinedchannel.send(`:eyes: Hey regardez ${member} a quitté le serveur! :cry:`);
+    let leavechannelembed = new Discord.RichEmbed()
+    .setColor("#566cb5")
+    .setTitle("**Départ**")
+    .setDescription(`${member} a quitté ${member.guild.name}`)
+    .setImage("https://i.imgur.com/f1nqKfL.png")
+    joinedchannel.send(leavechannelembed);
 });
 
 var con = mysql.createConnection({
@@ -312,36 +321,18 @@ if(!messages[message.author.id]){
 
 let messagesAmt = Math.floor(Math.random() * 1) + 1;
 let baseAmt = Math.floor(Math.random() * 1) + 1;
-let curmsg = messages[message.author.id].messages;
 
 if(messagesAmt === baseAmt){
     messages[message.author.id] = {
         messages: messages[message.author.id].messages + messagesAmt
     }
-    // if (curmsg <= messages[message.author.id].messages) {
-    //     messages[message.author.id].messages * 30;
-  
-    //     let addrankup = message.member;
-    //     let vipmember = message.guild.roles.find(role => role.name === "VIP");
-    //     addrankup.addRole(vipmember.id).catch(console.error);
-    //     message.channel.send(`Félicitations tu as envoyé 30 messages tu obtiens donc le rôle VIP qui te donnes accés au channel shout-vip !`)
-    //     var logschannel = message.guild.channels.find(logschannel => logschannel.name === "logs");
-    //     if (!logschannel) return message.channel.send("Impossible de trouver le salon logs.");
-    //     await (addrankup.addRole(vipmember.id));
-    //     const logembed = new Discord.RichEmbed()
-    //     .setDescription(`Rôle: ${vipmember.name} assigné a ${message.member} par ZLIMBOT`)
-    //     .setColor("#F8F9F9")
-    //     .setTimestamp()
-    //     logschannel.send(logembed);
-    // }
+
     fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
         if (err) console.log(err)
-        console.log(`Nouvelle valeur dans messages.json.`)
     });
 }
 
 }
-
     let messageArray = message.content.split(" ");
     let command = messageArray[0];
     let args = messageArray.slice(1);
