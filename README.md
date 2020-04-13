@@ -11,7 +11,7 @@ Example: `"token": "TOKEN",`
 
 # Database MySQL
 
-Ajouté les informations de votre database dans [zlimbot.js](http://git.grindhouse.xyz:8888/GrimZam/grimbot/blob/master/zlimbot.js) a la ligne 152 a 157
+Ajouté les informations de votre database dans [zlimbot.js](https://github.com/GrimZam/ZLIMBOT/blob/master/zlimbot.js) a la ligne 152 a 157
 ```
 var con = mysql.createConnection({
     host: "HOSTNAME",
