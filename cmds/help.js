@@ -11,7 +11,8 @@ module.exports.run = async (bot, message) => {
     .addBlankField(true)
     .addField("**LEGENDE :**", "[TIME = s/m/h/d] \
     \n [COULEUR = noir/rouge/bleu] \
-    \n [LANGUE = fr/en/es/de/ru]")
+    \n [LANGUE = fr/en/es/de/ru] \
+    \n [FLIP = Pile/Face]")
     .addBlankField(true)
     .addField("❯ :robot: Commandes Users", "- ``!userinfo`` **Informations** : Donne les infos de l'user. \n- ``!xp @Username`` **Informations** : Affiche l'xp du membre demandé. \
     \n- ``!zlimbot`` **Informations** : Donne les infos de ZLIMBOT. \n- ``!server`` **Informations** : Donne les infos du serveur. \
@@ -41,7 +42,8 @@ module.exports.run = async (bot, message) => {
     \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé.")
     .addBlankField(true)
     .addField("❯ :slot_machine: Casino", "- ``!roulette COULEUR MONTANT`` **Informations** : Le bot lance la roulette. \n- ``!slots MONTANT`` **Informations** : Le bot lance la machine a sous. \
-    \n- ``!giveaway NOMBRE DE WINNERS TIME PRICE`` **Informations** : Le bot lance un giveaway. \n- ``!lotery NOMBRE DE WINNERS TIME MONTANT`` **Informations** : Le bot lance une lotery.")
+    \n- ``!giveaway NOMBRE DE WINNERS TIME PRICE`` **Informations** : Le bot lance un giveaway. \n- ``!lotery NOMBRE DE WINNERS TIME MONTANT`` **Informations** : Le bot lance une lotery. \
+    \n- ``!coinflip FLIP MONTANT`` **Informations** : Le bot lance la piece.")
     .addBlankField(true)
     .addField("❯ :underage: Nsfw", "- ``!boobs`` **Informations** : Le bot envoie une photo random de boobs. \n- ``!pussy`` **Informations** : Le bot envoie une photo random d'une pussy. \n- ``!gonewild`` **Informations** : Le bot envoie une photo random de gonewild. \
     \n- ``!hentai`` **Informations** : Le bot envoie une photo random hentai. \n- ``!porngif`` **Informations** : Le bot envoie un porngif random. \n- ``!ass``  **Informations** : Le bot envoie une photo random d'un cul. \
@@ -49,7 +51,8 @@ module.exports.run = async (bot, message) => {
     \n- ``!milf`` **Informations** : Le bot envoie une photo random d'une milf. \n- ``!old`` **Informations** : Le bot envoie une photo random d'une vieille. \n- ``!ginger`` **Informations** : Le bot envoie une photo random d'une ginger.")
     .addBlankField(true)
     .addField("❯ :credit_card: Ecoin", "- ``!ecoin`` **Informations** : Affiche ton solde d'Ecoin disponible. \n- ``!pay @Username MONTANT`` **Informations** : vire le montant d'Ecoin au membre identifié. \
-    \n- ``!addecoin @Username MONTANT`` **Informations** : Ajoute des ecoin au membre sur la DB. **ONLY ADMIN**. \n- ``!removeecoin @Username MONTANT`` **Informations** : Retire des ecoin au membre sur la DB. **ONLY ADMIN**.")
+    \n- ``!addecoin @Username MONTANT`` **Informations** : Ajoute des ecoin au membre sur la DB. **ONLY ADMIN**. \n- ``!removeecoin @Username MONTANT`` **Informations** : Retire des ecoin au membre sur la DB. **ONLY ADMIN**. \
+    \n- ``!hack`` **Informations** : Lance un hack ecoin d'un montant random sur un membre random.")
     .setFooter(`Demandé par ${message.author.username}`)
 	.setTimestamp()
     author.send({embed: embed});
