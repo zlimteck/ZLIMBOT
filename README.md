@@ -4,6 +4,8 @@
 
 Bot Discord sous Node.js
 
+![Discord](https://img.shields.io/discord/637958719954616320?color=%23738ADB&label=Discord&style=flat-square)
+
 # Token
 
 Crée votre bot sur cette [page](https://discordapp.com/developers/applications/) recupéré votre token et copiez le dans le fichier [botsettings.json](https://github.com/GrimZam/GRIMBOT/blob/master/botsettings.json)
