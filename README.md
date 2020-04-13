@@ -56,4 +56,4 @@ Installer [nodemon](https://nodemon.io/) `npm install -g nodemon` et ensuite lan
 
 # Follow
 
-<img alt="Twitter URL" src="https://img.shields.io/twitter/url?color=%2300aced&label=Twitter&style=flat-square&url=https%3A%2F%2Ftwitter.com%2FJooDcrt"> <img alt="Discord" src="https://img.shields.io/discord/637958719954616320?color=%23738ADB&label=Discord&style=flat-square">
+![Twitter Follow](https://img.shields.io/twitter/follow/JooDcrt?color=%2300aced&label=Follow%20on%20twitter&style=flat-square)
