@@ -53,7 +53,3 @@ Installer [pm2](http://pm2.keymetrics.io/) `npm install pm2 -g` et ensuite lance
 # nodemon
 
 Installer [nodemon](https://nodemon.io/) `npm install -g nodemon` et ensuite lancer le bot via `nodemon NOMDUBOT.js`.
-
-# Follow
-
-<img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/JooDcrt?color=%2300aced&label=Follow%20on%20twitter&style=flat-square">
