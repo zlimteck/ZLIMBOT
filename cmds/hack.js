@@ -15,6 +15,7 @@ module.exports.run = async (bot, message) => {
     let hacker = coins[message.author.id].coins;
     let bicon = message.author.displayAvatarURL;
     let guild = message.channel.guild;
+    let dealer = coins[guild.owner.id].coins;
 
     let Errorchanembed = new Discord.RichEmbed()
     .setColor("#D40B25")
@@ -22,6 +23,13 @@ module.exports.run = async (bot, message) => {
     .addField("Erreur:", `Tu dois etre dans le salon #hack pour exécuter cette commande !`, true)
     .setFooter(`Erreur ToolsEcorpEcoinHack.exe`, bicon);
     if (!message.channel.nsfw) return message.channel.send(Errorchanembed) , console.log("Erreur ToolsEcorpEcoinHack.exe") , message.delete().catch();
+
+    let Errorbotembed = new Discord.RichEmbed()
+    .setColor("#D40B25")
+    .setTitle("**ToolsEcorpEcoinHack.exe**")
+    .addField("Erreur:", `Impossible de hack ${userhack} !`, true)
+    .setFooter(`Erreur ToolsEcorpEcoinHack.exe`, bicon);
+    if (userhack.id === bot.user.id) return message.channel.send(Errorbotembed) , console.log("Erreur ToolsEcorpEcoinHack.exe") , message.delete().catch();
 
     let Errorauthorembed = new Discord.RichEmbed()
     .setColor("#D40B25")
@@ -36,13 +44,6 @@ module.exports.run = async (bot, message) => {
     .addField("Erreur:", `Impossible de hack le créateur du script !`, true)
     .setFooter(`Erreur ToolsEcorpEcoinHack.exe`, bicon);
     if (userhack.id === guild.owner.id) return message.channel.send(Errorownerembed) , console.log("Erreur ToolsEcorpEcoinHack.exe") , message.delete().catch();
-
-    let Errorbotembed = new Discord.RichEmbed()
-    .setColor("#D40B25")
-    .setTitle("**ToolsEcorpEcoinHack.exe**")
-    .addField("Erreur:", `Impossible de hack un bot !`, true)
-    .setFooter(`Erreur ToolsEcorpEcoinHack.exe`, bicon);
-    if (userhack.id === bot.user.id) return message.channel.send(Errorbotembed) , console.log("Erreur ToolsEcorpEcoinHack.exe") , message.delete().catch();
 
     let ecoin = ["10", "100", "1000", "10000"];
     var hackecoin = ecoin[Math.floor(Math.random() * ecoin.length)];
@@ -64,6 +65,10 @@ module.exports.run = async (bot, message) => {
       coins: hacker + parseInt(hackecoin) - parseInt (coststransaction)
     };
 
+    coins[guild.owner.id] = {
+      coins: dealer + parseInt (coststransaction)
+    };
+
     let embed = new Discord.RichEmbed()
     .setColor("#615755")
     .setTitle("**👨‍💻 Hack Ecoin 👨‍💻**")
@@ -76,10 +81,18 @@ module.exports.run = async (bot, message) => {
     message.delete().catch();
 
     console.log(`${message.author.username} Hack ${hackecoin} ecoin du solde de ${userhack} Frais de transaction : ${coststransaction}.`)
+    console.log(`${message.guild.owner} récupére les frais de transfert : ${coststransaction} ecoin.`)
 
     fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
       if (err) cosole.log(err)
     });
+
+    let Userhackembed = new Discord.RichEmbed()
+    .setColor("#615755")
+    .setTitle("**Hack de votre solde Ecoin**")
+    .addField("Activité suspecte:", `Hack de ${hackecoin} Ecoin`)
+    .setFooter(`Activité suspecte effectué via ToolsEcorpEcoinHack.exe détecté par E corp`, bicon);
+    userhack.send({embed: Userhackembed});
 
     let Hackerembed = new Discord.RichEmbed()
     .setColor("#615755")
@@ -94,6 +107,13 @@ module.exports.run = async (bot, message) => {
     .addField("Frais de transaction:", `${coststransaction} Ecoin`)
     .setFooter(`ToolsEcorpEcoinHack.exe`, bicon);
     message.author.send({embed: coststransactionerembed});
+
+    let dealerembed = new Discord.RichEmbed()
+    .setColor("#615755")
+    .setTitle("**Récupération des frais de Transfert d'un hack via ToolsEcorpEcoinHack.exe**")
+    .addField("Hack:", `Frais de ${coststransaction} Ecoin suite au hack de ${message.author.username} victime : ${userhack}`)
+    .setFooter(`Frais de transfert via ToolsEcorpEcoinHack.exe`, bicon);
+    guild.owner.send({embed: dealerembed});
 
     console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
   }
