@@ -9,10 +9,10 @@ module.exports.run = async (bot, message) => {
     let platform;
     let build;
 
-    if (process.platform === "win32") {
+    if (process.platform === "Win") {
         platform = "Windows";
         build = "Development";
-    } else if (process.platform === "linux") {
+    } else if (process.platform === "Linux") {
         platform = process.platform;
         build = "Production";
     } else {
@@ -22,19 +22,21 @@ module.exports.run = async (bot, message) => {
 
     let Avatarbot = bot.user.displayAvatarURL;
     let embed = new Discord.RichEmbed()
-    .setAuthor(bot.user.username)
+    .setTitle(bot.user.username)
+    //.setAuthor(bot.user.username)
     .setThumbnail(Avatarbot)
     .setColor("#15f153")
     .setDescription("!help pour affiché les commandes")
-    .addField("❯ GRIMBOT", `v${pkg.version}`)
+    .addField("❯ ZLIMBOT", `v${pkg.version}`)
+    .addField("❯ Site web", "[Zlimbot](https://zlimteck.fr/zlimbot)")
     .addField("❯ Discord.js", `v${version}`)
     .addField("❯ Node.js", `${process.version}`)
     .addField("❯ Platform", `${platform}`)
-    .addField("❯ Build", `${build}`)
     .addField("❯ RAM Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`)
     .addField("❯ Uptime", `${duration}`)
     .addField("❯ Serveurs", `${bot.guilds.size.toLocaleString()}`)
     .addField("❯ Crée le", bot.user.createdAt)
+    .setURL("https://github.com/GrimZam/ZLIMBOT")
     .setFooter(`Demandé par ${message.author.username}`)
     .setTimestamp()
     message.channel.send(embed);
