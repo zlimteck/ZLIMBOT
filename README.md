@@ -5,7 +5,6 @@
 Bot Discord sous Node.js
 
 ![Discord](https://img.shields.io/discord/637958719954616320?color=%23738ADB&label=Discord&style=flat-square)
-[Site web](https://zlimteck.fr/zlimbot/)
 
 # Site web
 
