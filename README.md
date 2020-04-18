@@ -5,7 +5,7 @@
 Bot Discord sous Node.js
 
 ![Discord](https://img.shields.io/discord/637958719954616320?color=%23738ADB&label=Discord&style=flat-square)
-![Twitter URL](https://img.shields.io/twitter/url?color=%235e42a6&label=Site%20web&style=flat-square&url=https%3A%2F%2Fzlimteck.fr%2Fzlimbot%2F)
+![Site web](https://zlimteck.fr/zlimbot/)
 
 # Token
 
