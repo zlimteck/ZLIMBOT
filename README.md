@@ -8,7 +8,7 @@ Bot Discord sous Node.js
 
 # Site web
 
-[Site web](https://zlimteck.fr/zlimbot/)
+[Site web](https://zlimbot.fr)
 
 # Token
 
