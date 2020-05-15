@@ -7,15 +7,22 @@ module.exports.run = async (bot, message, args) => {
     if (!args[0] || args[0 == "null"]) return message.reply("Tu dois mentionner deux personnes !");
     if (!args[1] || args[1 == "null"]) return message.reply("Tu dois mentionner deux personnes !");
     let number = Math.floor(Math.random() * 99) + 1;
-    let embed = new Discord.RichEmbed()
+    let loveplusembed = new Discord.RichEmbed()
+    .setTitle("Love")
+    .setDescription(`Test de love`)
+    .addField("Membres", `${user1} + ${user2}`)
+    .addField("Resultat", `${number}% :two_hearts:`)
+    .setColor("#D50A0A")
+    .setImage("https://i.imgur.com/RAwPNKH.png")
+    if (number > 90) return message.channel.send(loveplusembed), message.delete().catch();
+
+    let loveembed = new Discord.RichEmbed()
     .setTitle("Love")
     .setDescription(`Test de love`)
     .addField("Membres", `${user1} + ${user2}`)
     .addField("Resultat", `${number}% :heart:`)
     .setColor("#D50A0A")
-    .setImage("https://i.imgur.com/RAwPNKH.png")
-    message.channel.send({embed: embed});
-    message.delete().catch();
+    if (number < 90) return message.channel.send(loveembed), message.delete().catch();
 
     console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
     
