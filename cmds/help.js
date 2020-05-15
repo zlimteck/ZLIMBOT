@@ -39,7 +39,7 @@ module.exports.run = async (bot, message) => {
     .addField("❯ :radio: Radio","- ``!radiolist`` **Informations** : Affiche la liste des radios disponible et la commande pour les lancer. \n- ``!stop`` **Informations** : Le bot se deconnecte du channel vocal et coupe la radio.")
     .addBlankField(true)
     .addField("❯ :tada: Fun", "- ``!chuck`` **Informations** : Quote sur Chuck Norris. \n- ``!trump`` **Informations** : Quote sur Donald Trump. \n- ``!meme`` **Informations** : Le bot envoie un meme. \
-    \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé.")
+    \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé. \n- ``!face @Username`` **Informations** : Le bot va envoyer une face random.")
     .addBlankField(true)
     .addField("❯ :slot_machine: Casino", "- ``!roulette COULEUR MONTANT`` **Informations** : Le bot lance la roulette. \n- ``!slots MONTANT`` **Informations** : Le bot lance la machine a sous. \
     \n- ``!giveaway NOMBRE DE WINNERS TIME PRICE`` **Informations** : Le bot lance un giveaway. \n- ``!lotery NOMBRE DE WINNERS TIME MONTANT`` **Informations** : Le bot lance une lotery. \
