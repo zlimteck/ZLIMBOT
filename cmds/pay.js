@@ -4,7 +4,7 @@ const fs = require("fs");
 const errors = require("../utils/errors.js");
 
 module.exports.run = async (bot, message, args) => {
-  //if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
+  if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
 
     if (!coins[message.author.id]){
       return message.reply("Tu n'as pas d'Ecoin dans ton portefeuille !")
@@ -27,6 +27,8 @@ module.exports.run = async (bot, message, args) => {
     let Ecoin = coins[message.author.id].coins;
 
     if (!args[1] || args[1 == "null"]) return message.reply("Aucun montant d'Ecoin rentré !");
+    if (args[1].includes("-")) return message.reply(`Montant d'ecoin incorrect !`);
+
 
     if (args[1] == pUser) return message.reply("Usage: !pay @username montant");
 
