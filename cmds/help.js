@@ -12,13 +12,15 @@ module.exports.run = async (bot, message) => {
     .addField("**LEGENDE :**", "[TIME = s/m/h/d] \
     \n [COULEUR = noir/rouge/bleu] \
     \n [LANGUE = fr/en/es/de/ru] \
-    \n [FLIP = Pile/Face]")
+    \n [FLIP = Pile/Face] \
+    \n [ITEM = skull/coin/diamond/relic]")
     .addBlankField(true)
     .addField("❯ :robot: Commandes Users", "- ``!userinfo`` **Informations** : Donne les infos de l'user. \n- ``!xp @Username`` **Informations** : Affiche l'xp du membre demandé. \
     \n- ``!zlimbot`` **Informations** : Donne les infos de ZLIMBOT. \n- ``!server`` **Informations** : Donne les infos du serveur. \
     \n- ``!member`` **Informations** : Affiche le nombre de membres sur le serveur. \n- ``!role ROLE`` **Informations** : Affiche les infos sur le role demandé. \
     \n- ``!avatar @Username`` **Informations** : Affiche l'avatar du membre. \n- ``!icon`` **Informations** : Affiche l'icône du serveur. \
-    \n- ``!emojis`` **Informations** : Affiche les emojis present sur le serveur. \n- ``!approved @Username`` **Informations** Fait une demande pour etre membre approuvé.")
+    \n- ``!emojis`` **Informations** : Affiche les emojis present sur le serveur. \n- ``!approved @Username`` **Informations** : Fait une demande pour etre membre approuvé. \
+    \n- ``!iventory`` **Informations** : Affiche le nombre de pioche(s) en ta possession.")
     .addBlankField(true)
     .addField("❯ :cop: Commandes Administration", "- ``!tempomute @Username TIME`` **Informations** : Mute le membre le temps indiqué. \n- ``!unmute @Username`` **Informations** : Unmute le membre. \
     \n- ``!clear NUMBER`` **Informations** : Delete X message. \n- ``!say MESSAGE`` **Informations** : Le bot envoi le message. \
@@ -39,7 +41,7 @@ module.exports.run = async (bot, message) => {
     .addField("❯ :radio: Radio","- ``!radiolist`` **Informations** : Affiche la liste des radios disponible et la commande pour les lancer. \n- ``!stop`` **Informations** : Le bot se deconnecte du channel vocal et coupe la radio.")
     .addBlankField(true)
     .addField("❯ :tada: Fun", "- ``!chuck`` **Informations** : Quote sur Chuck Norris. \n- ``!trump`` **Informations** : Quote sur Donald Trump. \n- ``!meme`` **Informations** : Le bot envoie un meme. \
-    \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé. \n- ``!face @Username`` **Informations** : Le bot va envoyer une face random.")
+    \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé. \n- ``!face @Username`` **Informations** : Le bot va envoyer une face random. \n - ``!mining ITEM`` **Informations** : Tu pars miné dans les mines.")
     .addBlankField(true)
     .addField("❯ :slot_machine: Casino", "- ``!roulette COULEUR MONTANT`` **Informations** : Le bot lance la roulette. \n- ``!slots MONTANT`` **Informations** : Le bot lance la machine a sous. \
     \n- ``!giveaway NOMBRE DE WINNERS TIME PRICE`` **Informations** : Le bot lance un giveaway. \n- ``!lotery NOMBRE DE WINNERS TIME MONTANT`` **Informations** : Le bot lance une lotery. \
@@ -52,7 +54,7 @@ module.exports.run = async (bot, message) => {
     .addBlankField(true)
     .addField("❯ :credit_card: Ecoin", "- ``!ecoin`` **Informations** : Affiche ton solde d'Ecoin disponible. \n- ``!pay @Username MONTANT`` **Informations** : vire le montant d'Ecoin au membre identifié. \
     \n- ``!addecoin @Username MONTANT`` **Informations** : Ajoute des ecoin au membre sur la DB. **ONLY ADMIN**. \n- ``!removeecoin @Username MONTANT`` **Informations** : Retire des ecoin au membre sur la DB. **ONLY ADMIN**. \
-    \n- ``!hack`` **Informations** : Lance un hack ecoin d'un montant random sur un membre random.")
+    \n- ``!hack`` **Informations** : Lance un hack ecoin d'un montant random sur un membre random. \n- ``!pickaxe`` **Informations** : Achete une pioche pour aller miner.")
     .setFooter(`Demandé par ${message.author.username}`)
 	.setTimestamp()
     author.send({embed: embed});
