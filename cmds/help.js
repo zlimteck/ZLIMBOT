@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message) => {
     let avatar = bot.user.displayAvatarURL;
     let author = message.author
-    let embed = new Discord.RichEmbed()
+    let help1embed = new Discord.RichEmbed()
     .setAuthor("HELP")
     .setDescription("Affiche les commandes que propose ZLIMBOT")
     .setThumbnail(avatar)
@@ -38,10 +38,15 @@ module.exports.run = async (bot, message) => {
     .addField("❯ :musical_note: Music Youtube", "- ``!youtube RECHERCHE`` **Informations** : Le bot va chercher la video sur youtube. \n- ``!yt LIEN`` **Informations** : Le bot va jouer l'audio de la video dans le channel vocal. \
     \n- ``!stop`` **Informations** : Le bot se deconnecte du channel vocal et coupe la radio.")
     .addBlankField(true)
+    author.send(help1embed);
+    message.delete().catch();
+    let help2embed = new Discord.RichEmbed()
+    .setColor("#1AC6E1")
     .addField("❯ :radio: Radio","- ``!radiolist`` **Informations** : Affiche la liste des radios disponible et la commande pour les lancer. \n- ``!stop`` **Informations** : Le bot se deconnecte du channel vocal et coupe la radio.")
     .addBlankField(true)
     .addField("❯ :tada: Fun", "- ``!chuck`` **Informations** : Quote sur Chuck Norris. \n- ``!trump`` **Informations** : Quote sur Donald Trump. \n- ``!meme`` **Informations** : Le bot envoie un meme. \
-    \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé. \n- ``!face @Username`` **Informations** : Le bot va envoyer une face random. \n - ``!mining ITEM`` **Informations** : Tu pars miné dans les mines.")
+    \n- ``!metamorphe @Username`` **Informations** : Le bot va te métamorphosé. \n- ``!love @Username @Username`` **Informations** : Le bot donne un % random de love. \n- ``!face @Username`` **Informations** : Le bot va envoyer une face random. \
+    \n - ``!mining ITEM`` **Informations** : Tu pars miné dans les mines.")
     .addBlankField(true)
     .addField("❯ :slot_machine: Casino", "- ``!roulette COULEUR MONTANT`` **Informations** : Le bot lance la roulette. \n- ``!slots MONTANT`` **Informations** : Le bot lance la machine a sous. \
     \n- ``!giveaway NOMBRE DE WINNERS TIME PRICE`` **Informations** : Le bot lance un giveaway. \n- ``!lotery NOMBRE DE WINNERS TIME MONTANT`` **Informations** : Le bot lance une lotery. \
@@ -57,7 +62,7 @@ module.exports.run = async (bot, message) => {
     \n- ``!hack`` **Informations** : Lance un hack ecoin d'un montant random sur un membre random. \n- ``!pickaxe`` **Informations** : Achete une pioche pour aller miner.")
     .setFooter(`Demandé par ${message.author.username}`)
 	.setTimestamp()
-    author.send({embed: embed});
+    author.send(help2embed);
     message.delete().catch();
 
     console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
