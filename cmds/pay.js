@@ -4,7 +4,7 @@ const fs = require("fs");
 const errors = require("../utils/errors.js");
 
 module.exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
+//   if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
 
     if (!coins[message.author.id]){
       return message.reply("Tu n'as pas d'Ecoin dans ton portefeuille !")
