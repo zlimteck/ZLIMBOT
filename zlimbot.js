@@ -46,7 +46,7 @@ fs.readdir("./radios/",(err, files) => {
     });
 });
 
-bot.on ("ready", async () => {
+bot.on ("ready", async (message) => {
     console.log(`${bot.user.username} est maintenant actif !`);
     console.log(`${bot.user.username} est connecté sur ${bot.guilds.size} serveurs !`);
     bot.user.setActivity("!help", {type: "GAME"});
@@ -59,7 +59,7 @@ bot.on ("ready", async () => {
             bot.user.setActivity("!help pour obtenir les cmds")
             activNum = 0
         }
-    }, 3 * 1000);
+    }, 3 * 1000)
 });
 
 bot.on("message", async (message, guild, name, channel) => {
@@ -194,8 +194,8 @@ bot.on("guildMemberRemove", async (member, message) => {
 
 var con = mysql.createConnection({
     host: "localhost",
-    user: "",
-    password: "",
+    user: "root",
+    password: "Ivdyabr5",
     database: "zlimbot"
 });
 
@@ -263,7 +263,7 @@ if(nxtLvl <= xp[message.author.id].xp){
   .addField("Level :", curlvl + 1)
   .addField("Total Xp :", curxp);
 
-  message.channel.send(lvlup)
+  message.author.send(lvlup)
   console.log(`${message.author} viens de level up`)
 }
 
@@ -322,11 +322,12 @@ if(!messages[message.author.id]){
 let messagesAmt = Math.floor(Math.random() * 1) + 1;
 let baseAmt = Math.floor(Math.random() * 1) + 1;
 
+
 if(messagesAmt === baseAmt){
     messages[message.author.id] = {
         messages: messages[message.author.id].messages + messagesAmt
     }
-
+    
     fs.writeFile("./messages.json", JSON.stringify(messages), (err) => {
         if (err) console.log(err)
     });
