@@ -23,17 +23,17 @@ module.exports.run = async (bot, message, args) => {
         return message.reply("Tu n'as pas d'Ecoin dans ton portefeuille !")
     }
 
-    if(sCoins < "50000") return message.reply("Tu n'as pas assez d'Ecoin pour effectuer cette achat !");
+    if(sCoins < "10000") return message.reply("Tu n'as pas assez d'Ecoin pour effectuer cette achat !");
 
     coins[message.author.id] = {
-        coins: pCoins - parseInt("50000")
+        coins: pCoins - parseInt("10000")
     };
     fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
         if(err) cosole.log(err)
     });
 
     coins[guild.owner.id] = {
-        coins: dealer + parseInt("50000")
+        coins: dealer + parseInt("10000")
     };
     fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
         if(err) cosole.log(err)
@@ -42,6 +42,9 @@ module.exports.run = async (bot, message, args) => {
     pick[message.author.id] = {
         pick: pPick + parseInt(1)
     };
+
+    console.log(`${message.guild.owner} recupere 10 000 ecoin suite a l'achat d'une pioche par ${message.author.username}`);
+    
     fs.writeFile("./pickaxe.json", JSON.stringify(pick), (err) => {
         if(err) cosole.log(err)
     });
@@ -50,7 +53,7 @@ module.exports.run = async (bot, message, args) => {
     .setTitle("Achat réussi")
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
     .addField("Achat:", "Pickaxe", true)
-    .addField("Prix:", `50 000 Ecoin`, true) 
+    .addField("Prix:", `10 000 Ecoin`, true) 
     .setTimestamp()
     message.channel.send(embed);
     message.delete().catch();
@@ -58,11 +61,11 @@ module.exports.run = async (bot, message, args) => {
     let dealerembed = new Discord.RichEmbed()
     .setColor("#615755")
     .setTitle("**Récupération des ecoin suite a l'achat d'une pioche**")
-    .addField("Achat:", `50 000 Ecoin suite a l'achat de ${message.author.username}`)
+    .addField("Achat:", `10 000 Ecoin suite a l'achat de ${message.author.username}`)
     .setFooter(`Paiement`, bicon);
-    guild.owner.send({embed: dealerembed});
+    guild.owner.send(dealerembed)
 
-    console.log(`Commande ${message.author.lastMessage} executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
+    console.log(`Commande ${message.author.lastMessage} execute sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username} le ${message.createdAt}`)
     console.log(`Ajout d'une pioche dans l'inventaire de ${message.author.id} le ${message.createdAt}`)
 }
 
