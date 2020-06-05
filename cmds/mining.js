@@ -13,19 +13,19 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#D40B25")
     .setTitle("**Pas de pioche(s)**")
     .addField("Commande:", "``!pickaxe``", true)
-    .addField("Cout:", "50 000 ecoin", true)
+    .addField("Cout:", "10 000 ecoin", true)
     .setFooter(`${message.author.username}`, bicon);
     if(!pick[message.author.id]){
         pick[message.author.id] = {
             pick: 0
-        }; return message.channel.send(Piocheembed) , console.log("Commande !mining erreur : Pickaxe") , message.delete().catch();
+        }; //return message.channel.send(Piocheembed) , console.log("Commande !mining erreur : Pickaxe") , message.delete().catch();
     }
 
     let item = args[0];
-    let moneyskull = "70000";
-    let moneygold = "120000";
-    let moneydiamond = "170000";
-    let moneyrelic = "5000000";
+    let moneyskull = "50000";
+    let moneygold = "100000";
+    let moneydiamond = "150000";
+    let moneyrelic = "500000";
     let reasons = ["Tu as croisé un fantôme tu as pris peur et quitté la mine en laissant tomber ton butin!", "Il y avait un panneau de radioactivité, tu as du rebrousser chemin!", "Tu es tombé dans une creuvase et tu as malheureusement du sacrifier ton butin pour te sauver la vie!", "Tu as cassé ta pioche !", "Tu as donné ton butin a l'orgresse pour lui faire un bisous tellement tu etait sous son charme !"];
     var reasonschoise = reasons[Math.floor(Math.random() * reasons.length)];
     let danger = ["Sorcière(s)", "Squelette(s)", "Chauve-souris", "Démon(s)", "Gobelin(s)", "Ogresse(s)"]
@@ -52,7 +52,7 @@ module.exports.run = async (bot, message, args) => {
     .setColor("#D40B25")
     .setTitle("**Pas de pioche(s)**")
     .addField("Commande:", "``!pickaxe``", true)
-    .addField("Cout:", "50 000 ecoin", true)
+    .addField("Cout:", "10 000 ecoin", true)
     .setFooter(`${message.author.username}`, icon);
     if (pick[message.author.id].pick < 1) return message.channel.send(Nopiocheembed) , console.log("Commande !mining erreur : No pickaxe") , message.delete().catch();
     item = item.toLowerCase()
@@ -70,7 +70,7 @@ module.exports.run = async (bot, message, args) => {
     });
 
     const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-    let time = ("1h");
+    let time = ("10m");
 
     let scriptembed = new Discord.RichEmbed()
     .setColor("#615755")
@@ -81,13 +81,13 @@ module.exports.run = async (bot, message, args) => {
     .setImage("https://i.imgur.com/KwyR0me.gif")
     .setFooter(`${message.author.username} est dans la mine a ${args[0]}`, icon)
     message.channel.send(scriptembed).then(msg => msg.delete(ms(time)));
-    console.log(`${message.author.username} est entré dans la mine a ${args[0]} | Temps estimé: ${time}`)
+    console.log(`${message.author.username} est entre dans la mine a ${args[0]} | Temps estime: ${time}`)
 
     setTimeout(function() {
-        let relicrandom = Math.floor(Math.random() * 20);
-        let diamondrandom = Math.floor(Math.random() * 10);
-        let coinrandom = Math.floor(Math.random() * 8);
-        let skullrandom = Math.floor(Math.random() * 5);
+        let relicrandom = Math.floor(Math.random() * 8);
+        let diamondrandom = Math.floor(Math.random() * 4);
+        let coinrandom = Math.floor(Math.random() * 3);
+        let skullrandom = Math.floor(Math.random() * 2);
         let danger = Math.floor(Math.random() * 20);
 
         if (relicrandom == 0 && item == 3) {
@@ -107,9 +107,9 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter(`Butin de ${message.author.username}`, icon)
                 message.channel.send(embed);
                 message.delete().catch();
-                console.log(`${message.author.username} gagne ${moneyrelic} ecoin en ayant trouvé une ${args[0]} dans la mine`)
+                console.log(`${message.author.username} gagne ${moneyrelic} ecoin en ayant trouve une ${args[0]} dans la mine`)
             });
-        } else if (diamondrandom == 5 && item == 2) {
+        } else if (diamondrandom == 3 && item == 2) {
             let curBal2 = coins[message.author.id].coins
             coins[message.author.id] = {
                 coins: curBal2 + parseInt(moneydiamond)
@@ -126,9 +126,9 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter(`Butin de ${message.author.username}`, icon)
                 message.channel.send(embed);
                 message.delete().catch();
-                console.log(`${message.author.username} gagne ${moneydiamond} ecoin en ayant trouvé un ${args[0]} dans la mine`)
+                console.log(`${message.author.username} gagne ${moneydiamond} ecoin en ayant trouve un ${args[0]} dans la mine`)
             });
-        } else if (coinrandom == 4 && item == 1) {
+        } else if (coinrandom == 2 && item == 1) {
             let curBal3 = coins[message.author.id].coins
             coins[message.author.id] = {
                 coins: curBal3 + parseInt(moneygold)
@@ -145,9 +145,9 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter(`Butin de ${message.author.username}`, icon)
                 message.channel.send(embed);
                 message.delete().catch();
-                console.log(`${message.author.username} gagne ${moneygold} ecoin en ayant trouvé un ${args[0]} dans la mine`)
+                console.log(`${message.author.username} gagne ${moneygold} ecoin en ayant trouve un ${args[0]} dans la mine`)
             });
-        } else if (skullrandom == 2 && item == 0) {
+        } else if (skullrandom == 1 && item == 0) {
             let curBal3 = coins[message.author.id].coins
             coins[message.author.id] = {
                 coins: curBal3 + parseInt(moneyskull)
@@ -164,7 +164,7 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter(`Butin de ${message.author.username}`, icon)
                 message.channel.send(embed);
                 message.delete().catch();
-                console.log(`${message.author.username} gagne ${moneyskull} ecoin en ayant trouvé un ${args[0]} dans la mine`)
+                console.log(`${message.author.username} gagne ${moneyskull} ecoin en ayant trouve un ${args[0]} dans la mine`)
             });
         } else {
             let embed = new Discord.RichEmbed()
@@ -182,12 +182,12 @@ module.exports.run = async (bot, message, args) => {
             .setColor("#E642AA")
             .setImage("https://i.imgur.com/aCnYiGg.jpg")
             .setFooter(`${message.author.username}`, bicon);
-            if (snowwhitechoise === "Te montre un téton !") return message.author.send(whitesnowembed), console.log(`Blanche neige a montré un téton a ${message.author.username}`) , message.delete().catch();
-            console.log(`${message.author.username} as quittés la mine pour la raison suivante: ${reasonschoise} et perd son butin ${args[0]} dans la mine`)
+            if (snowwhitechoise === "Te montre un téton !") return message.author.send(whitesnowembed), console.log(`Blanche neige a montré un teton a ${message.author.username}`) , message.delete().catch();
+            console.log(`${message.author.username} as quittes la mine pour la raison suivante: ${reasonschoise} et perd son butin ${args[0]} dans la mine`)
             message.delete().catch();
         }
 
-        console.log(`Commande !mining executé sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username}`)
+        console.log(`Commande !mining execute sur le serveur ${message.guild.name} dans le salon ${message.channel.name} par le membre ${message.author.username}`)
     },ms(time))
 }
 
