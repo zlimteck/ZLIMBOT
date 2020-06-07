@@ -1,5 +1,9 @@
 {
     "token": "TOKEN HERE",
     "prefix": "!",
+    "host": "HOST HERE",
+    "user": "USER HERE",
+    "password": "PASSWORD HERE",
+    "database": "DATABASE NAME HERE",
     "red": "#b70000"
 }
