@@ -2,6 +2,10 @@ const botSettings = require("./botsettings.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const prefix = botSettings.prefix;
+const host = botSettings.host;
+const user = botSettings.user;
+const password = botSettings.password;
+const database = botSettings.database;
 const bot = new Discord.Client({disableEveryone: true})
 const mysql = require("mysql");
 let xp = require("./xp.json");
@@ -193,10 +197,10 @@ bot.on("guildMemberRemove", async (member, message) => {
 });
 
 var con = mysql.createConnection({
-    host: "",
-    user: "",
-    password: "",
-    database: "zlimbot"
+    host: host,
+    user: user,
+    password: password,
+    database: database
 });
 
 con.connect(err => {
