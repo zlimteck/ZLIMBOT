@@ -39,7 +39,6 @@ CREATE TABLE messages (id VARCHAR(30) NOT NULL, messages INT NOT NULL);
 
 (Attention via la DB ca stock uniquement les informations , pour le moments toutes les commandes utilisent les .json).
 
-
 # Prérequis
 
 [![Foo](https://img.shields.io/badge/Node.js-Download-3ADC1A&?style=flat-square&logo=appveyor)](https://nodejs.org/en)
@@ -57,3 +56,7 @@ Installer [pm2](http://pm2.keymetrics.io/) `npm install pm2 -g` et ensuite lance
 # nodemon
 
 Installer [nodemon](https://nodemon.io/) `npm install -g nodemon` et ensuite lancer le bot via `nodemon NOMDUBOT.js`.
+
+# Commande a exécuté dans discord une fois le bot fonctionnel 
+
+```!configserver``` : Ajoute les roles et salons essentiel au fonctionnement du bot sur le serveur discord
