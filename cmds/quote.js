@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 			.setTitle(`Quote depuis le salon #${message.channel.name} :`)
 			.setColor(0x00AE86)
 			.setDescription(`${message.content} 
-			[Aller vers le message](https://discordapp.com/channels/${channel.guild.id}/${args[1]}/${args[0]})`)
+			[Aller vers le message](https://discord.com/channels/${channel.guild.id}/${args[1]}/${args[0]})`)
 			.setAuthor(message.author.username, message.author.avatarURL)
 			.setTimestamp(new Date(message.createdTimestamp).toISOString())
 			if (Attachment[0] !== undefined) { embed.setImage(Attachment[0].url); }
