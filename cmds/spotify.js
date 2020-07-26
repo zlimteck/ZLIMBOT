@@ -9,7 +9,7 @@ module.exports.run = async (bot, message) => {
         const trackAuthor = user.presence.game.state;
         const trackAlbum = user.presence.game.assets.largeText;
         let embed = new Discord.RichEmbed()
-        .setAuthor("Spotify Musique Infos", "https://cdn.discordapp.com/emojis/408668371039682560.png")
+        .setAuthor("Spotify Musique Infos", "https://i.imgur.com/2klysCl.png")
         .setColor("#1ED760")
         .setThumbnail(trackIMG)
         .addField("Musique", trackName)
