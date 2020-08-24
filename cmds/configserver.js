@@ -1,7 +1,8 @@
 const Discord = require("discord.js");
+const errors = require("../utils/errors.js");
 
 module.exports.run = async (bot, message) => {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
+    if (!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR") , console.log(`Erreur sur la commande !configserver: le membre ${message.author.username} n'a pas le role ADMINISTRATEUR`) , message.delete().catch();
     let createrole1 = "ADMINISTRATEUR"
     message.guild.createRole({
         name: createrole1,
