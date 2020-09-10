@@ -35,6 +35,27 @@ module.exports.run = async (bot, message, args) => {
     .setFooter(`erreur`, bicon);
     if(sCoins < "1000000") return message.channel.send(errornotenoughecoin), console.log("Erreur role VIP: errornotenoughecoin") , message.delete().catch();
 
+    let errornousername = new Discord.RichEmbed()
+    .setColor("#615755")
+    .setTitle("**Erreur**")
+    .setDescription(`${message.author} tu n'as pas spécifié ton @username !`)
+    .setFooter(`erreur`, bicon);
+    if (message.mentions.members.size < 1) return message.channel.send(errornousername), console.log("Erreur role VIP: errornousername") , message.delete().catch();
+
+    let errornoroleVIP = new Discord.RichEmbed()
+    .setColor("#615755")
+    .setTitle("**Erreur**")
+    .setDescription(`${user} le ${foundRole.name} n'est pas disponible sur ce serveur !`)
+    .setFooter(`erreur`, bicon);
+    if (!foundRole) return message.channel.send(errornoroleVIP), console.log("Erreur role VIP: errornoroleVIP") , message.delete().catch();
+
+    let errorhasrole = new Discord.RichEmbed()
+    .setColor("#615755")
+    .setTitle("**Erreur**")
+    .setDescription(`${user} tu as deja le role ${foundRole.name} !`)
+    .setFooter(`erreur`, bicon);
+    if (user.roles.has(foundRole.id)) return message.channel.send(errorhasrole), console.log("Erreur role VIP: errorhasrole") , message.delete().catch();
+
     coins[message.author.id] = {
         coins: pCoins - parseInt("1000000")
     };
@@ -48,25 +69,6 @@ module.exports.run = async (bot, message, args) => {
     fs.writeFile("./ecoin.json", JSON.stringify(coins), (err) => {
         if(err) cosole.log(err)
     });
-
-    let errornousername = new Discord.RichEmbed()
-    .setColor("#615755")
-    .setTitle("**Erreur**")
-    .setDescription(`${message.author} tu n'as pas spécifié ton @username !`)
-    .setFooter(`erreur`, bicon);
-    if (message.mentions.members.size < 1) return message.channel.send(errornousername), console.log("Erreur role VIP: errornousername") , message.delete().catch();
-    let errornoroleVIP = new Discord.RichEmbed()
-    .setColor("#615755")
-    .setTitle("**Erreur**")
-    .setDescription(`${user} le ${foundRole.name} n'est pas disponible sur ce serveur !`)
-    .setFooter(`erreur`, bicon);
-    if (!foundRole) return message.channel.send(errornoroleVIP), console.log("Erreur role VIP: errornoroleVIP") , message.delete().catch();
-    let errorhasrole = new Discord.RichEmbed()
-    .setColor("#615755")
-    .setTitle("**Erreur**")
-    .setDescription(`${user} tu as deja le role ${foundRole.name} !`)
-    .setFooter(`erreur`, bicon);
-    if (user.roles.has(foundRole.id)) return message.channel.send(errorhasrole), console.log("Erreur role VIP: errorhasrole") , message.delete().catch();
 
     var logschannel = message.guild.channels.find(logschannel => logschannel.name === "logs");
     if (!logschannel) return console.log("Impossible de trouver le salon logs.");
