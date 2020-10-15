@@ -26,11 +26,11 @@ module.exports.run = async (bot, message, args) => {
     let moneygold = "100000";
     let moneydiamond = "150000";
     let moneyrelic = "500000";
-    let reasons = ["Tu as croisé un fantôme tu as pris peur et quitté la mine en laissant tomber ton butin!", "Il y avait un panneau de radioactivité, tu as du rebrousser chemin!", "Tu es tombé dans une creuvase et tu as malheureusement du sacrifier ton butin pour te sauver la vie!", "Tu as cassé ta pioche !", "Tu as donné ton butin a l'orgresse pour lui faire un bisous tellement tu etait sous son charme !"];
+    let reasons = ["Tu as croisé un fantôme tu as pris peur et quitté la mine en laissant tomber ton butin!", "Il y avait un panneau de radioactivité, tu as dû rebrousser chemin!", "Tu es tombé dans une crevasse et tu as malheureusement dû sacrifier ton butin pour te sauver la vie!", "Tu as cassé ta pioche !", "Tu as donné ton butin à l'ogresse pour lui faire un bisous tellement tu étais sous son charme !"];
     var reasonschoise = reasons[Math.floor(Math.random() * reasons.length)];
     let danger = ["Sorcière(s)", "Squelette(s)", "Chauve-souris", "Démon(s)", "Gobelin(s)", "Ogresse(s)"]
     var dangerchoise = danger[Math.floor(Math.random() * danger.length)];
-    let snowwhite = ["Te fais un bisous !", "Te fais un calin !", "Te fais la gueule !", "Te mouche le nez !", "T'essuie tes larmes !", "Te montre un téton !"]
+    let snowwhite = ["Te fais un bisou !", "Te fais un calin !", "Te fais la gueule !", "Te mouche le nez !", "T'essuie tes larmes !", "Te montre un téton !"]
     var snowwhitechoise = snowwhite[Math.floor(Math.random() * snowwhite.length)];
     let pPick = pick[message.author.id].pick;
     let icon = message.author.displayAvatarURL;
