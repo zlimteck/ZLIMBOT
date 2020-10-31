@@ -33,7 +33,7 @@ module.exports.run = async (bot, message) => {
     \n- ``!hastebin MESSAGE`` **Informations** : Publie sur Hastebin et envoie l'url. \n- ``!ping`` **Informations** : Tu obtiens ton ping. \n- ``!speedtest`` **Informations** : Effectue un speedtest du serveur. \
     \n- ``!afk TIME`` **Informations** : Le bot avertie que tu es AFK. \n- ``!rappel TIME MESSAGE`` **Informations** : Lance un rappel. \n- ``!weather LOCALISATION`` **Informations** : Affiche la météo. \
     \n- ``!spotify`` **Informations** : Affiche les infos du morceau jouer sur Spotify. \n- ``!itunes RECHERCHE`` **Informations** : Effectue une recherche d'un album. \n- ``!trad MOT LANGUE`` **Informations** : Traduit le mot donné. \
-    \n- ``!instagram LIEN DE PUBLICATION`` **Informations** : Affiche le post instagram.")
+    \n- ``!instagram LIEN DE PUBLICATION`` **Informations** : Affiche le post instagram. \n- ``!iss`` **Informations** : Le bot donne les coordonées GPS de l'ISS.")
     .addBlankField(true)
     .addField("❯ :musical_note: Music Youtube", "- ``!youtube RECHERCHE`` **Informations** : Le bot va chercher la video sur youtube. \n- ``!yt LIEN`` **Informations** : Le bot va jouer l'audio de la video dans le channel vocal. \
     \n- ``!stop`` **Informations** : Le bot se deconnecte du channel vocal et coupe la radio.")
@@ -52,14 +52,9 @@ module.exports.run = async (bot, message) => {
     \n- ``!giveaway NOMBRE DE WINNERS TIME PRICE`` **Informations** : Le bot lance un giveaway. \n- ``!lotery NOMBRE DE WINNERS TIME MONTANT`` **Informations** : Le bot lance une lotery. \
     \n- ``!coinflip FLIP MONTANT`` **Informations** : Le bot lance la piece.")
     .addBlankField(true)
-    .addField("❯ :underage: Nsfw", "- ``!boobs`` **Informations** : Le bot envoie une photo random de boobs. \n- ``!pussy`` **Informations** : Le bot envoie une photo random d'une pussy. \n- ``!gonewild`` **Informations** : Le bot envoie une photo random de gonewild. \
-    \n- ``!hentai`` **Informations** : Le bot envoie une photo random hentai. \n- ``!porngif`` **Informations** : Le bot envoie un porngif random. \n- ``!ass``  **Informations** : Le bot envoie une photo random d'un cul. \
-    \n- ``!hot`` **Informations** : Le bot envoie une photo random hot. \n- ``!young`` **Informations** : Le bot envoie une photo random d'une jeune. \n- ``!asiat`` **Informations** : Le bot envoie une photo random d'une asiat. \
-    \n- ``!milf`` **Informations** : Le bot envoie une photo random d'une milf. \n- ``!old`` **Informations** : Le bot envoie une photo random d'une vieille. \n- ``!ginger`` **Informations** : Le bot envoie une photo random d'une ginger.")
-    .addBlankField(true)
     .addField("❯ :credit_card: Ecoin", "- ``!ecoin`` **Informations** : Affiche ton solde d'Ecoin disponible. \n- ``!pay @Username MONTANT`` **Informations** : vire le montant d'Ecoin au membre identifié. \
     \n- ``!addecoin @Username MONTANT`` **Informations** : Ajoute des ecoin au membre sur la DB. **ONLY ADMIN**. \n- ``!removeecoin @Username MONTANT`` **Informations** : Retire des ecoin au membre sur la DB. **ONLY ADMIN**. \
-    \n- ``!hack`` **Informations** : Lance un hack ecoin d'un montant random sur un membre random. \n- ``!pickaxe`` **Informations** : Achete une pioche pour aller miner.")
+    \n- ``!hack`` **Informations** : Lance un hack ecoin d'un montant random sur un membre random. \n- ``!pickaxe`` **Informations** : Achete une pioche pour aller miner. \n- ``!addpickaxe @Username MONTANT`` **Informations** : Ajoute le montant de pickaxe indiqué a l'user indiqué.  **ONLY ADMIN**.")
     .setFooter(`Demandé par ${message.author.username}`)
 	.setTimestamp()
     author.send(help2embed);
